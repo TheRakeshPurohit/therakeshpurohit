@@ -5,7 +5,7 @@
 -->
 
 - 🔭 I’m currently working on React Native.
-- 🌱 I’m currently learning ...
+- 🌱 I’m always learning.
 - 👯 I’m looking to collaborate on OpenSource Projects.
 - 🤔 I’m looking for help with Cloud Computing.
 - 💬 Ask me about technology, environment, philosophy, personal skills, self-improvements...
