@@ -15,5 +15,4 @@
 - 😄 Pronouns: ...
 - ⚡ Fun fact: Whenever I call myself it is busy and he is very responsive on texts.
 
- <img src="https://github-readme-stats.vercel.app/api?username=therakeshpurohitshow_icons=true&theme=gotham" alt="Rakesh Purohit" />
- 
+![My GitHub stats](https://github-readme-stats.vercel.app/api?username=therakeshpurohit)
