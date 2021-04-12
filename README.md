@@ -6,7 +6,7 @@
 
 ![](https://visitor-badge.glitch.me/badge?page_id=therakeshpurohit.therakeshpurohit)
 
-- 🔭 I’m currently working on `React Native & ReactJS` at @CoruscateSolution
+- 🔭 I’m currently working on `React Native & ReactJS` at @DhiWise
 - 🌱 I’m always learning.
 - 👯 I’m looking to collaborate on OpenSource Projects.
 - 🤔 I’m looking for help with **Cloud Computing**.
