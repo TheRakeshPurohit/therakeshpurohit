@@ -16,3 +16,5 @@
 - ⚡ Fun fact: Whenever I call myself it is busy and he is very responsive on texts.
 
 ![My GitHub stats](https://github-readme-stats.vercel.app/api?username=therakeshpurohit)
+
+![Metrics](https://metrics.lecoq.io/therakeshpurohit)
