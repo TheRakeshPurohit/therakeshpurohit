@@ -7,13 +7,17 @@
 
 <p align="left"> <a href="https://twitter.com/irakeshpurohit" target="blank"><img src="https://img.shields.io/twitter/follow/irakeshpurohit?logo=twitter&style=for-the-badge" alt="irakeshpurohit" /></a> </p>
 
-- 🌱 I’m currently learning **TypeScript,**
+- 🔭 I’m currently working on [ReactJS](@DhiWise)
+
+- 🌱 I’m currently learning **TypeScript**
 
 - 📝 I regularly write articles on [https://therakeshpurohit.medium.com/](https://therakeshpurohit.medium.com/)
 
 - 💬 Ask me about **React, Babel, AST, WebPack, Compiling, Transpiling, Loaders, JS**
 
 - 📄 Know about my experiences [https://therakeshpurohit.medium.com/](https://therakeshpurohit.medium.com/)
+
+- ⚡ Fun fact **Whenever I call myself it is busy and he is very responsive on texts.**
 
 ### Blogs posts
 <!-- BLOG-POST-LIST:START -->
@@ -40,10 +44,6 @@
 <p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=therakeshpurohit&" alt="therakeshpurohit" /></p>
 
 
-
-
-### Hi there 👋
-
 <a href="https://app.daily.dev/irakeshpurohit"><img src="https://api.daily.dev/devcards/c17bb2b9816d40cd842f1d6109361bca.png?r=lhg" width="400" alt="Rakesh Purohit's Dev Card"/></a>
 
 <!--
@@ -51,15 +51,6 @@
 -->
 
 ![](https://visitor-badge.glitch.me/badge?page_id=therakeshpurohit.therakeshpurohit)
-
-- 🔭 I’m currently working on `React Native & ReactJS` at @DhiWise
-- 🌱 I’m always learning.
-- 👯 I’m looking to collaborate on OpenSource Projects.
-- 🤔 I’m looking for help with **Cloud Computing**.
-- 💬 Ask me about technology, environment, philosophy, personal skills, self-improvements...
-- 📫 How to reach me: [`e-mail`](mailto:rakeshpurohit909@gmail.com) [`LinkedIn`](https://www.linkedin.com/in/therakeshpurohit) [`Twitter`](https://www.twitter.com/irakeshpurohit)
-- 😄 Pronouns: ...
-- ⚡ Fun fact: Whenever I call myself it is busy and he is very responsive on texts.
 
 ![My GitHub stats](https://github-readme-stats.vercel.app/api?username=therakeshpurohit)
 
