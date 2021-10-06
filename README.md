@@ -44,8 +44,6 @@
 
 <p>&nbsp;<img align="center" src="https://github-readme-stats.vercel.app/api?username=therakeshpurohit&show_icons=true&locale=en" alt="therakeshpurohit" /></p>
 
-<p><img align="center" src="https://github-readme-streak-stats.herokuapp.com/?user=therakeshpurohit&" alt="therakeshpurohit" /></p>
-
 <a href="https://app.daily.dev/irakeshpurohit"><img src="https://api.daily.dev/devcards/c17bb2b9816d40cd842f1d6109361bca.png?r=lhg" width="400" alt="Rakesh Purohit's Dev Card"/></a>
 
 <!--
