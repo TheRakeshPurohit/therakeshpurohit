@@ -1,5 +1,7 @@
 ### Hi there 👋
 
+<a href="https://app.daily.dev/irakeshpurohit"><img src="https://api.daily.dev/devcards/c17bb2b9816d40cd842f1d6109361bca.png?r=lhg" width="400" alt="Rakesh Purohit's Dev Card"/></a>
+
 <!--
 **TheRakeshPurohit/therakeshpurohit** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 -->
