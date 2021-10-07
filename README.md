@@ -2,11 +2,9 @@
 <h3 align="center">A passionate JS developer from India</h3>
 
 <p align="left">
-  <img
-    src="https://komarev.com/ghpvc/?username=therakeshpurohit&label=Profile%20views&color=0e75b6&style=flat"
-    alt="therakeshpurohit"
-  />
+ ![](https://visitor-badge.glitch.me/badge?page_id=therakeshpurohit.therakeshpurohit)
 </p>
+
 
 <p align="left">
   <a href="https://github.com/ryo-ma/github-profile-trophy">
@@ -25,15 +23,14 @@
   /></a>
 </p>
 
-- 🔭 I’m currently working at [DhiWise](https://www.dhiwise.com) - 🌱 I’m
-currently learning **TypeScript** - 📝 I regularly write articles on
-[https://therakeshpurohit.medium.com/](https://therakeshpurohit.medium.com/) -
-💬 Ask me about **React, Babel, AST, WebPack, Compiling, Transpiling, Loaders,
-JS** - 📄 Know about my experiences
-[https://therakeshpurohit.medium.com/](https://therakeshpurohit.medium.com/) -
-⚡ Fun fact **Whenever I call myself it is busy and he is very responsive on
-texts.** ### Blogs posts
+- 🔭 I’m currently working at => [DhiWise](https://www.dhiwise.com)
+- 🌱 I’m currently learning => **TypeScript**
+- 📝 I regularly write articles on => [https://therakeshpurohit.medium.com/](https://therakeshpurohit.medium.com/)
+- 💬 Ask me about  => **React, Babel, AST, WebPack, Compiling, Transpiling, Loaders, JS**
+- 📄 Know about my experiences => [https://therakeshpurohit.medium.com/](https://therakeshpurohit.medium.com/)
+- ⚡ Fun fact => **Whenever I call myself it is busy and he is very responsive on texts.**
 
+### Blogs posts
 <!-- BLOG-POST-LIST:START -->
 <!-- BLOG-POST-LIST:END -->
 
@@ -290,6 +287,4 @@ texts.** ### Blogs posts
 <!--
 **TheRakeshPurohit/therakeshpurohit** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 -->
-
-![](https://visitor-badge.glitch.me/badge?page_id=therakeshpurohit.therakeshpurohit)
 ![Metrics](https://metrics.lecoq.io/therakeshpurohit)
