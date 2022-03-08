@@ -2,20 +2,6 @@
 <h3 align="center">A passionate JS developer from India</h3>
 
 <p align="left">
- ![](https://visitor-badge.glitch.me/badge?page_id=therakeshpurohit.therakeshpurohit)
-</p>
-
-
-<p align="left">
-  <a href="https://github.com/ryo-ma/github-profile-trophy">
-    <img
-      src="https://github-profile-trophy.vercel.app/?username=therakeshpurohit"
-      alt="therakeshpurohit"
-    />
-  </a>
-</p>
-
-<p align="left">
   <a href="https://twitter.com/irakeshpurohit" target="blank"
     ><img
       src="https://img.shields.io/twitter/follow/irakeshpurohit?logo=twitter&style=for-the-badge"
