@@ -23,10 +23,10 @@
 
 ### Blogs posts
 <!-- BLOG-POST-LIST:START -->
+- [Top 10 amazing chart libraries in React](https://medium.com/dhiwise/top-10-amazing-chart-libraries-in-react-322cb91fad62?source=rss-415d4a54ac94------2)
+- [From Figma’s design into React component using DhiWise](https://medium.com/dhiwise/from-figmas-design-into-react-component-using-dhiwise-bcea27144905?source=rss-415d4a54ac94------2)
+- [Ready-made UI Libraries for your forthcoming ReactJS project](https://medium.com/dhiwise/ready-made-ui-libraries-for-your-forthcoming-reactjs-project-83f71d64205d?source=rss-415d4a54ac94------2)
 - [Processes That Eat up Crucial Time From Your Development Life Cycle](https://medium.com/dhiwise/processes-that-eat-up-your-development-time-4183cc7393f7?source=rss-415d4a54ac94------2)
-- [Stay Hydrated Chrome Extension &lpar;Cristiano Ronaldo Edition&rpar;](https://therakeshpurohit.medium.com/stay-hydrated-chrome-extension-cristiano-ronaldo-edition-cc834ac1a994?source=rss-415d4a54ac94------2)
-- [I re-wrote Array in JavaScript](https://therakeshpurohit.medium.com/i-re-wrote-array-in-javascript-daa4c564e693?source=rss-415d4a54ac94------2)
-- [Is React 18 overhyped?](https://dev.to/therakeshpurohit/is-react-18-overhyped-1ih)
 <!-- BLOG-POST-LIST:END -->
 
 <p align="left">
