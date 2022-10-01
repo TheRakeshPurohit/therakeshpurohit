@@ -23,10 +23,10 @@
 
 ### Blogs posts
 <!-- BLOG-POST-LIST:START -->
+- [How to integrate Xata into the ReactJS application using DhiWise?](https://medium.com/dhiwise/how-to-integrate-xata-into-the-reactjs-application-using-dhiwise-12ab8eeb9d2?source=rss-415d4a54ac94------2)
+- [How to integrate Twitter &amp; WhatsApp APIs with DhiWise in just 45 minutes?](https://medium.com/dhiwise/how-to-integrate-twitter-whatsapp-apis-with-dhiwise-in-under-45-minutes-35509f56ddb9?source=rss-415d4a54ac94------2)
 - [Top 10 amazing chart libraries in React](https://medium.com/dhiwise/top-10-amazing-chart-libraries-in-react-322cb91fad62?source=rss-415d4a54ac94------2)
 - [From Figma’s design into React component using DhiWise](https://medium.com/dhiwise/from-figmas-design-into-react-component-using-dhiwise-bcea27144905?source=rss-415d4a54ac94------2)
-- [Ready-made UI Libraries for your forthcoming ReactJS project](https://medium.com/dhiwise/ready-made-ui-libraries-for-your-forthcoming-reactjs-project-83f71d64205d?source=rss-415d4a54ac94------2)
-- [Processes That Eat up Crucial Time From Your Development Life Cycle](https://medium.com/dhiwise/processes-that-eat-up-your-development-time-4183cc7393f7?source=rss-415d4a54ac94------2)
 <!-- BLOG-POST-LIST:END -->
 
 <p align="left">
