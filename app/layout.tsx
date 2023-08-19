@@ -22,7 +22,7 @@ export default function RootLayout({
         className={`${firaCode.className} flex flex-col h-screen justify-between`}
       >
         <Header />
-        <main className="mb-auto h-10">{children}</main>
+        <main className="flex flex-grow">{children}</main>
         <Footer />
       </body>
     </html>
