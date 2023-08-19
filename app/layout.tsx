@@ -18,9 +18,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={firaCode.className}>
+      <body
+        className={`${firaCode.className} flex flex-col h-screen justify-between`}
+      >
         <Header />
-        {children}
+        <main className="mb-auto h-10">{children}</main>
         <Footer />
       </body>
     </html>
