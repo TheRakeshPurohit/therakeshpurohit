@@ -1,7 +1,7 @@
 import Image from "next/image";
 export default function Footer() {
   return (
-    <footer className="flex flex-row justify-center item-center supports-backdrop-blur:bg-background/60 sticky bottom-0 z-50 w-full border-b bg-background/95 backdrop-blur gap-2">
+    <footer className="flex flex-row justify-center item-center supports-backdrop-blur:bg-background/60 bottom-0 z-50 w-full border-b bg-background/95 backdrop-blur gap-2 h-2">
       {/* GitHub  */}
 
       <a
