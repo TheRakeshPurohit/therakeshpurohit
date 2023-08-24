@@ -8,7 +8,20 @@ const firaCode = Fira_Code({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "The Rakesh Purohit",
-  description: "This place is the online presence of The Rakesh Purohit",
+  description: "The Rakesh Purohit | Software Engineer",
+  keywords: [
+    "rakesh",
+    "purohit",
+    "rakesh purohit",
+    "TheRakeshPurohit",
+    "ReactJS",
+    "Frontend",
+    "Software Engineer",
+    "Surat",
+    "India",
+    "AST",
+    "GitHub",
+  ],
 };
 
 export default function RootLayout({
