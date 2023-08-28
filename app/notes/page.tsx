@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Card = ({ title, date, readTime, link }) => {
   return (
     <div className="shadow-lg flex flex-col flex-grow gap-3 p-3">
@@ -17,7 +19,6 @@ export default function Home() {
   return (
     <main className="flex flex-col flex-grow gap-3 p-3">
       <Card title={"Revision for a Web Dev"} date={"28th August 2023"} readTime={"2 minutes"} link="/notes/revision-for-a-web-dev"/>
-      
     </main>
   );
 }
