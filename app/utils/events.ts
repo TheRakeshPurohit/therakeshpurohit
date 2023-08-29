@@ -44,10 +44,9 @@ export const disableMouseEvents = () => {
     document.addEventListener("touchmove", disableMouseEvent, {
       passive: false,
     });
-
-    function disableMouseEvent(event: Event) {
-      event.stopPropagation();
-      event.preventDefault();
-    }
+  }
+  function disableMouseEvent(event: Event) {
+    event.stopPropagation();
+    event.preventDefault();
   }
 };
