@@ -32,10 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${firaCode.className} flex flex-col h-screen justify-between`}
+        className={`${firaCode.className} flex flex-col lg:h-screen lg:w-full lg:justify-between lg:cursor-nw-resize lg:overscroll-none`}
       >
         <Header />
-        <main className="flex flex-grow">{children}</main>
+        <main className="">{children}</main>
         <Footer />
       </body>
     </html>
