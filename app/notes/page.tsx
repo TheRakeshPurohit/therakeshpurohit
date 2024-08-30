@@ -2,15 +2,25 @@ import Link from "next/link";
 
 const Card = ({ title, date, readTime, link }) => {
   return (
-    <div className="shadow-lg flex flex-col flex-grow gap-3 p-3">
-      <Link href={link} >
-      <div className="flex flex-col items-center justify-center">
-      <span>{title}</span>
-      </div>
-      <div className="flex flex-row justify-between">
-      <span>{date}</span>
-      <span>{readTime}</span>
-      </div> 
+    //card component to display title date readTime and link
+    <div>
+      <Link href={link}>
+        <a className="flex flex-col gap-2 p-3 bg-white rounded-lg shadow-lg">
+          <h1 className="text-2xl font-bold">{title}</h1>
+          <div className="flex gap-2">
+            <p className="text-sm text-gray-500">{date}</p>
+            <p
+              className="text-sm text-gray-500"
+              style={{ marginLeft: "auto" }}
+            >
+              {readTime}
+            </p>
+          </div>
+          <p className="text-sm text-gray-500">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Necessitatibus, sequi.
+          </p> 
+        </a>
       </Link>
     </div>
   );
