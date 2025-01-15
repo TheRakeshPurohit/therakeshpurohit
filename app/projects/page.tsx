@@ -5,25 +5,25 @@ import { Button } from '@/components/ui/button';
 
 const projects = [
   {
-    title: 'Project One',
-    description: 'A full-stack e-commerce platform built with Next.js and Supabase.',
+    title: 'Live Link Embedded Preview',
+    description: 'A complete frontend solution for link embedded preview.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
-    github: 'https://github.com',
-    demo: 'https://example.com',
+    github: 'https://github.com/TheRakeshPurohit/live-link-embedded-preview',
+    demo: 'https://live-link-embedded-preview.vercel.app/',
   },
   {
-    title: 'Project Two',
-    description: 'Real-time chat application using WebSocket and React.',
+    title: 'VSCode-ReactTestGen',
+    description: 'ReactComponent TestCase Generator for Visual Studio Code',
     image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8f2c1d9?q=80&w=2674&auto=format&fit=crop',
-    github: 'https://github.com',
-    demo: 'https://example.com',
+    github: 'https://github.com/TheRakeshPurohit/VSCode-ReactTestGen',
+    demo: 'https://marketplace.visualstudio.com/items?itemName=TheRakeshPurohit.reacttestgen',
   },
   {
-    title: 'Project Three',
-    description: 'AI-powered content management system.',
+    title: 'Water Reminder Chrome extension (Dev Edition)',
+    description: 'Water Reminder is an extension which will force you to drink water after every hour you spend on your screen.',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop',
-    github: 'https://github.com',
-    demo: 'https://example.com',
+    github: 'https://github.com/TheRakeshPurohit/water-reminder',
+    demo: 'https://github.com/TheRakeshPurohit/water-reminder',
   },
 ];
 
