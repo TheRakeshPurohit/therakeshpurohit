@@ -1,27 +1,14 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Fira_Code } from "next/font/google";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import './globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import Navbar from '@/components/Navbar';
+import { ThemeProvider } from '@/components/theme-provider';
 
-const firaCode = Fira_Code({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "The Rakesh Purohit",
-  description: "The Rakesh Purohit | Software Engineer",
-  keywords: [
-    "rakesh",
-    "purohit",
-    "rakesh purohit",
-    "TheRakeshPurohit",
-    "ReactJS",
-    "Frontend",
-    "Software Engineer",
-    "Surat",
-    "India",
-    "AST",
-    "GitHub",
-  ],
+  title: 'Developer Portfolio',
+  description: 'Personal portfolio showcasing projects, blogs, and more',
 };
 
 export default function RootLayout({
@@ -30,13 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body
-        className={`${firaCode.className} flex flex-col lg:h-screen lg:w-full lg:justify-between lg:cursor-nw-resize lg:overscroll-none`}
-      >
-        <Header />
-        <main className="">{children}</main>
-        <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} antialiased`} suppressHydrationWarning>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Navbar />
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );
