@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { GithubIcon, LinkedinIcon, TwitterIcon, XIcon } from 'lucide-react';
-import Link from 'next/link';
+import { Button } from "@/components/ui/button";
+import { GithubIcon, LinkedinIcon, TwitterIcon, XIcon } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -10,13 +10,16 @@ export default function Home() {
           Hi, I'm <span className="text-primary">Rakesh Purohit</span>
         </h1>
         <p className="text-xl text-muted-foreground">
-          Frontend developer passionate about building beautiful and functional web applications.
+          Frontend developer passionate about building beautiful and functional
+          web applications.
         </p>
-        <p className="text-xl text-muted-foreground">
-          Frontend developer passionate about building beautiful and functional web applications.
-          Specialized in React and Next.js. AST, Babel, Next.js, Browser, Frontend tooling? I‘m in.
-          
-          Frontend Engineer (SDE III), Developer Advocate 🥑 (Frontend, React) <Link href="https://dhiwise.com">@DhiWise</Link>
+        <p className="text-lg text-muted-foreground">
+          Specialized in React and Next.js. AST, Babel, Next.js, Browser,
+          Frontend tooling? I‘m in.
+        </p>
+        <p className="text-base text-muted-foreground">
+          Frontend Engineer (SDE III), Developer Advocate 🥑 (Frontend, React){" "}
+          <Link href="https://dhiwise.com">@DhiWise</Link>
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Button asChild>
@@ -34,7 +37,10 @@ export default function Home() {
             </Link>
           </Button>
           <Button variant="ghost" size="icon" asChild>
-            <Link href="https://linkedin.com/in/therakeshpurohit" target="_blank">
+            <Link
+              href="https://linkedin.com/in/therakeshpurohit"
+              target="_blank"
+            >
               <LinkedinIcon className="h-5 w-5" />
               <span className="sr-only">LinkedIn</span>
             </Link>
