@@ -56,7 +56,7 @@ export default function About() {
 
               <h2 className="text-xl font-semibold mt-8 mb-4">Experience</h2>
               <div className="space-y-4">
-                <div>
+                <div className="border border-solid">
                   <h3 className="font-medium">Frontend Engineer (SDE III)</h3>
                   <p className="text-muted-foreground">
                     DhiWise • Apr 2021 - Present
