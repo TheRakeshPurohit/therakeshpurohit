@@ -56,7 +56,7 @@ export default function About() {
 
               <h2 className="text-xl font-semibold mt-8 mb-4">Experience</h2>
               <div className="space-y-4">
-                <div className="border border-solid">
+                <div className="border border-solid border border-white rounded-md shadow-sm">
                   <h3 className="font-medium">Frontend Engineer (SDE III)</h3>
                   <p className="text-muted-foreground">
                     DhiWise • Apr 2021 - Present
@@ -118,7 +118,7 @@ export default function About() {
                     through 1:1 calls and documentation.
                   </p>
                 </div>
-                <div>
+                <div className="border border-solid border border-white rounded-md shadow-sm">
                   <h3 className="font-medium">Full-stack Developer</h3>
                   <p className="text-muted-foreground">
                     Coruscate Solutions Pvt. Ltd. • Jun 2020 - May 2021
@@ -142,7 +142,7 @@ export default function About() {
                     engagement by 35%.
                   </p>
                 </div>
-                <div>
+                <div className="border border-solid border border-white rounded-md shadow-sm">
                   <h3 className="font-medium">Intern</h3>
                   <p className="text-muted-foreground">
                     GatiSoftTech • Jan 2020 - Jun 2020
@@ -152,7 +152,7 @@ export default function About() {
                     data storage and sync features.
                   </p>
                 </div>
-                <div>
+                <div className="border border-solid border border-white rounded-md shadow-sm">
                   <h3 className="font-medium">Intern</h3>
                   <p className="text-muted-foreground">
                     Elite Technocrats • Dec 2018 - Jun 2019
@@ -162,7 +162,7 @@ export default function About() {
                     Entity Framework.
                   </p>
                 </div>
-                <div>
+                <div className="border border-solid border border-white rounded-md shadow-sm">
                   <h3 className="font-medium">Web Developer (PHP)</h3>
                   <p className="text-muted-foreground">
                     divi-professional.com • Jun 2018 - Jul 2018
@@ -172,7 +172,7 @@ export default function About() {
                     Development.
                   </p>
                 </div>
-                <div>
+                <div className="border border-solid border border-white rounded-md shadow-sm">
                   <h3 className="font-medium">Telesales Executive</h3>
                   <p className="text-muted-foreground">
                     PureSkill InfoSolutions • Jul 2016 - Jun 2016
