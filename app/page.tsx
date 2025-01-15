@@ -11,7 +11,12 @@ export default function Home() {
         </h1>
         <p className="text-xl text-muted-foreground">
           Frontend developer passionate about building beautiful and functional web applications.
-          Specialized in React and Next.js.
+        </p>
+        <p className="text-xl text-muted-foreground">
+          Frontend developer passionate about building beautiful and functional web applications.
+          Specialized in React and Next.js. AST, Babel, Next.js, Browser, Frontend tooling? I‘m in.
+          
+          Frontend Engineer (SDE III), Developer Advocate 🥑 (Frontend, React) <Link href="https://dhiwise.com">@DhiWise</Link>
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Button asChild>
