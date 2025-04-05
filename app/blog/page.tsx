@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import Link from 'next/link';
 import { ArrowLeft, Clock, Calendar } from 'lucide-react';
-import MDXContent from './mdx-content';
+import MDXContent from "./[slug]/mdx-content"
 
 // Sample blog posts data - in a real app, this would come from a CMS or API
 const posts = {
