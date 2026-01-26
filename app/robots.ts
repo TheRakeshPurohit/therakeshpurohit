@@ -1,4 +1,6 @@
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
+
+export const dynamic = 'force-static';
  
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,5 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
     },
     sitemap: 'https://therakeshpurohit.com/sitemap.xml',
+    host: 'https://therakeshpurohit.com',
   }
 }

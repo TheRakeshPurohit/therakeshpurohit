@@ -1,75 +1,81 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ExternalLink, Github } from 'lucide-react';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import type { Metadata } from 'next';
+import ProjectGallery from '@/components/project-gallery';
+import StructuredData from '@/components/structured-data';
+import { projects, site } from '@/lib/content';
+import { defaultOgImage, siteUrl } from '@/lib/seo';
 
-const projects = [
-  {
-    title: 'Live Link Embedded Preview',
-    description: 'A complete frontend solution for link embedded preview.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop',
-    github: 'https://github.com/TheRakeshPurohit/live-link-embedded-preview',
-    demo: 'https://live-link-embedded-preview.vercel.app/',
+export const dynamic = 'force-static';
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description:
+    'Selected frontend builds, tooling experiments, and product-level interfaces.',
+  alternates: {
+    canonical: '/projects',
   },
-  {
-    title: 'VSCode-ReactTestGen',
-    description: 'ReactComponent TestCase Generator for Visual Studio Code',
-    image: 'https://images.unsplash.com/photo-1432888622747-4eb9a8f2c1d9?q=80&w=2674&auto=format&fit=crop',
-    github: 'https://github.com/TheRakeshPurohit/VSCode-ReactTestGen',
-    demo: 'https://marketplace.visualstudio.com/items?itemName=TheRakeshPurohit.reacttestgen',
+  openGraph: {
+    type: 'website',
+    url: `${siteUrl}/projects`,
+    title: `Projects | ${site.name}`,
+    description:
+      'Selected frontend builds, tooling experiments, and product-level interfaces.',
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: `${site.name} projects`,
+      },
+    ],
   },
-  {
-    title: 'Water Reminder Chrome extension (Dev Edition)',
-    description: 'Water Reminder is an extension which will force you to drink water after every hour you spend on your screen.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2672&auto=format&fit=crop',
-    github: 'https://github.com/TheRakeshPurohit/water-reminder',
-    demo: 'https://github.com/TheRakeshPurohit/water-reminder',
+  twitter: {
+    card: 'summary_large_image',
+    title: `Projects | ${site.name}`,
+    description:
+      'Selected frontend builds, tooling experiments, and product-level interfaces.',
+    images: [defaultOgImage],
   },
-];
+};
 
 export default function Projects() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold">Projects</h1>
-          <p className="text-muted-foreground mt-2">
-            A collection of my recent work and side projects.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <Card key={project.title}>
-              <CardHeader>
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-48 object-cover rounded-t-lg"
-                />
-              </CardHeader>
-              <CardContent>
-                <CardTitle>{project.title}</CardTitle>
-                <CardDescription className="mt-2">{project.description}</CardDescription>
-                <div className="flex gap-4 mt-4">
-                  <Button size="sm" variant="outline" asChild>
-                    <Link href={project.github} target="_blank">
-                      <Github className="mr-2 h-4 w-4" />
-                      Code
-                    </Link>
-                  </Button>
-                  <Button size="sm" asChild>
-                    <Link href={project.demo} target="_blank">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Demo
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-16 sm:px-6 lg:px-8">
+      <StructuredData
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          '@id': `${siteUrl}/projects#projects`,
+          url: `${siteUrl}/projects`,
+          name: `Projects | ${site.name}`,
+          description:
+            'Selected frontend builds, tooling experiments, and product-level interfaces.',
+          isPartOf: {
+            '@id': `${siteUrl}/#website`,
+          },
+          hasPart: projects.map((project) => ({
+            '@type': 'CreativeWork',
+            name: project.title,
+            description: project.description,
+            url: project.demo,
+            codeRepository: project.github,
+          })),
+        }}
+      />
+      <section className="space-y-4">
+        <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
+          Projects
+        </p>
+        <h1 className="font-serif text-4xl text-foreground sm:text-5xl">
+          Selected builds and side projects.
+        </h1>
+        <p className="max-w-2xl text-muted-foreground">
+          A mix of production-grade tools, extension work, and frontend experiments.
+        </p>
+      </section>
+
+      <section>
+        <ProjectGallery projects={projects} />
+      </section>
     </div>
   );
 }

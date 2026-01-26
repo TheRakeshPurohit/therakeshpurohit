@@ -1,192 +1,184 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import ExperienceTimeline from '@/components/experience-timeline';
+import MetricCounter from '@/components/metric-counter';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import StructuredData from '@/components/structured-data';
+import { credentials, experience, impactMetrics, skills, site } from '@/lib/content';
+import { defaultOgImage, siteUrl } from '@/lib/seo';
 
-const skills = [
-  "React",
-  "Next.js",
-  "AST",
-  "Tailwind CSS",
-  "Pug",
-  "Webpack",
-  "Browser extension",
-  "IDE extension",
-  "Puppeteer",
-  "Redux",
-  "Bundling",
-  "Technical Writing",
-];
+export const dynamic = 'force-static';
+
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    'Senior frontend engineer specializing in performance, design systems, and developer tooling.',
+  alternates: {
+    canonical: '/about',
+  },
+  openGraph: {
+    type: 'profile',
+    url: `${siteUrl}/about`,
+    title: `About | ${site.name}`,
+    description:
+      'Senior frontend engineer specializing in performance, design systems, and developer tooling.',
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: `${site.name} about`,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `About | ${site.name}`,
+    description:
+      'Senior frontend engineer specializing in performance, design systems, and developer tooling.',
+    images: [defaultOgImage],
+  },
+};
 
 export default function About() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-      <div className="space-y-8">
-        <div>
-          <h1 className="text-3xl font-bold">About Me</h1>
-          <p className="text-muted-foreground mt-2">
-            Get to know more about my journey and expertise.
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-16 px-4 py-16 sm:px-6 lg:px-8">
+      <StructuredData
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'AboutPage',
+          '@id': `${siteUrl}/about#about`,
+          url: `${siteUrl}/about`,
+          name: `About ${site.name}`,
+          description:
+            'Senior frontend engineer specializing in performance, design systems, and developer tooling.',
+          isPartOf: {
+            '@id': `${siteUrl}/#website`,
+          },
+          mainEntity: {
+            '@id': `${siteUrl}/#person`,
+          },
+        }}
+      />
+      <section className="space-y-4">
+        <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
+          About
+        </p>
+        <h1 className="font-serif text-4xl text-foreground sm:text-5xl">
+          {site.name} — {site.role}
+        </h1>
+        <p className="max-w-2xl text-lg text-muted-foreground">{site.summary}</p>
+        <div className="flex flex-wrap gap-3">
+          <Button asChild>
+            <Link href="/projects">View case studies</Link>
+          </Button>
+          <Button variant="outline" asChild>
+            <Link href="/blog">Read writing</Link>
+          </Button>
+        </div>
+      </section>
+
+      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {impactMetrics.map((metric) => (
+          <Card
+            key={metric.value}
+            className="border-border/60 bg-background/70 p-5 shadow-crisp transition hover:-translate-y-1 hover:shadow-glow"
+            data-cursor="card"
+          >
+            <MetricCounter value={metric.value} label={metric.label} />
+          </Card>
+        ))}
+      </section>
+
+      <section className="grid gap-6 lg:grid-cols-[0.35fr_0.65fr]">
+        <div className="space-y-3">
+          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
+            Experience
+          </p>
+          <h2 className="font-serif text-3xl text-foreground">Build history.</h2>
+          <p className="text-muted-foreground">
+            A mix of product engineering, developer tools, and frontend platforms.
           </p>
         </div>
+        <div className="space-y-5">
+          <ExperienceTimeline items={experience} />
+        </div>
+      </section>
 
-        <Card>
-          <CardContent className="pt-6">
-            <div className="prose dark:prose-invert max-w-none space-y-4">
-              <p>
-                Hi! I'm Rakesh Purohit, a frontend developer with over 5 years
-                of experience in building web applications. I specialize in
-                frontend ecosystems, with a strong focus on creating performant
-                and scalable solutions.
+      <section className="space-y-6">
+        <div className="space-y-3">
+          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
+            Skills
+          </p>
+          <h2 className="font-serif text-3xl text-foreground">Toolbelt.</h2>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          {skills.map((skill) => (
+            <Badge
+              key={skill}
+              variant="secondary"
+              className="rounded-full border border-border/60 bg-background/70 text-foreground shadow-crisp transition hover:-translate-y-1 hover:shadow-glow"
+              data-cursor="card"
+            >
+              {skill}
+            </Badge>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-6">
+        <div className="space-y-3">
+          <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
+            Credentials
+          </p>
+          <h2 className="font-serif text-3xl text-foreground">
+            Recognition, writing, and open source.
+          </h2>
+          <p className="text-muted-foreground">
+            Awards, certifications, and community work that show up in how I build.
+          </p>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-2">
+          {credentials.map((group) => (
+            <Card
+              key={group.title}
+              className="border-border/60 bg-background/70 p-5 shadow-crisp transition hover:-translate-y-1 hover:shadow-glow"
+              data-cursor="card"
+            >
+              <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+                {group.title}
               </p>
-
-              <p>
-                I started my journey as a self-taught developer, and through
-                continuous learning and hands-on experience, I've had the
-                opportunity to work on various exciting projects.
-              </p>
-
-              <h2 className="text-xl font-semibold mt-8 mb-4">
-                Skills & Technologies
-              </h2>
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <Badge key={skill} variant="secondary">
-                    {skill}
-                  </Badge>
+              <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
+                {group.items.map((item) => (
+                  <li key={item.title} className="space-y-1">
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        target="_blank"
+                        className="font-medium text-foreground hover:text-primary transition-colors"
+                      >
+                        {item.title}
+                      </Link>
+                    ) : (
+                      <p className="font-medium text-foreground">{item.title}</p>
+                    )}
+                    {item.description ? (
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
+                    ) : null}
+                    {item.meta ? (
+                      <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                        {item.meta}
+                      </p>
+                    ) : null}
+                  </li>
                 ))}
-              </div>
-
-              <h2 className="text-xl font-semibold mt-8 mb-4">Experience</h2>
-              <div className="space-y-4">
-                <div className="border border-solid border border-white rounded-md shadow-sm p-2 m-2">
-                  <h3 className="font-medium">Frontend Engineer (SDE III)</h3>
-                  <p className="text-muted-foreground">
-                    DhiWise • Apr 2021 - Present
-                  </p>
-                  <p className="mt-2">
-                    Improved product code-base compile time by 51.2% with CRACO
-                    method.
-                  </p>
-                  <p className="mt-2">
-                    Built a drag-and-drop dashboard with react-beautiful-dnd,
-                    increasing efficiency by 40%, cutting errors by 30%.
-                  </p>
-                  <p className="mt-2">
-                    Increased HTML block conversion accuracy by 40% with an AST
-                    generator for React component props.
-                  </p>
-                  <p className="mt-2">
-                    Cut down 70% of repetitive code in react-admin-panel through
-                    a JSON-to-column generator.
-                  </p>
-                  <p className="mt-2">
-                    Enhanced an In-Browser IDE to support JPEG, WEBP, PNG, and
-                    SVG, boosting compatibility by 50%, improving user
-                    experience, and securing the code for being copied.
-                  </p>
-                  <p className="mt-2">
-                    Ported a Preact Figma plugin to React within 6 hours,
-                    maintaining full feature parity.
-                  </p>
-                  <p className="mt-2">
-                    Migrated a Webflow site to Next.js with SSR in frontend +
-                    Strapi CMS with zero data loss using JS scripting and
-                    Puppeteer for efficient data scraping.
-                  </p>
-                  <p className="mt-2">
-                    Developed a Chrome extension to automate blog posting from
-                    Notion to Strapi CMS, improving content management
-                    efficiency by 60%.
-                  </p>
-                  <p className="mt-2">
-                    Published 1000+ educational blogs on frontend development,
-                    enhancing community engagement and visibility, 90+ PageSpeed
-                    scores.
-                  </p>
-                  <p className="mt-2">
-                    Extended a Figma plugin to support the new Dev mode,
-                    increasing functionality and user adoption by 30%.
-                  </p>
-                  <p className="mt-2">
-                    Spear-headed #30Days30Usecases campaign including
-                    HackerRank, leading 10 engineers.
-                  </p>
-                  <p className="mt-2">
-                    Mentored 2 software developers in agile practices and code
-                    review.
-                  </p>
-                  <p className="mt-2">
-                    Provided active technical support to users, free and paid,
-                    through 1:1 calls and documentation.
-                  </p>
-                </div>
-                <div className="border border-solid border border-white rounded-md shadow-sm p-2 m-2">
-                  <h3 className="font-medium">Full-stack Developer</h3>
-                  <p className="text-muted-foreground">
-                    Coruscate Solutions Pvt. Ltd. • Jun 2020 - May 2021
-                  </p>
-                  <p className="mt-2">
-                    Engineered a flexible UI from JSON, enabling simultaneous
-                    operations across multiple projects and improving efficiency
-                    by 40%.
-                  </p>
-                  <p className="mt-2">
-                    Refactored Class components into functional ones, reducing
-                    technical debt by 30% and enhancing maintainability.
-                  </p>
-                  <p className="mt-2">
-                    Created a reactive KYC form, reducing processing time by 50%
-                    and improving accuracy.
-                  </p>
-                  <p className="mt-2">
-                    Built 10+ data-intensive products with personalized web
-                    dashboards, and graphs enhancing user experience and
-                    engagement by 35%.
-                  </p>
-                </div>
-                <div className="border border-solid border border-white rounded-md shadow-sm p-2 m-2">
-                  <h3 className="font-medium">Intern</h3>
-                  <p className="text-muted-foreground">
-                    GatiSoftTech • Jan 2020 - Jun 2020
-                  </p>
-                  <p className="mt-2">
-                    Developed CRM iOS applications in React Native with offline
-                    data storage and sync features.
-                  </p>
-                </div>
-                <div className="border border-solid border border-white rounded-md shadow-sm p-2 m-2">
-                  <h3 className="font-medium">Intern</h3>
-                  <p className="text-muted-foreground">
-                    Elite Technocrats • Dec 2018 - Jun 2019
-                  </p>
-                  <p className="mt-2">
-                    Developed a Project Management System using .NET MVC5 and
-                    Entity Framework.
-                  </p>
-                </div>
-                <div className="border border-solid border border-white rounded-md shadow-sm p-2 m-2">
-                  <h3 className="font-medium">Web Developer (PHP)</h3>
-                  <p className="text-muted-foreground">
-                    divi-professional.com • Jun 2018 - Jul 2018
-                  </p>
-                  <p className="mt-2">
-                    Worked on WordPress, PHP, Divi Theme, and Plugin
-                    Development.
-                  </p>
-                </div>
-                <div className="border border-solid border border-white rounded-md shadow-sm p-2 m-2">
-                  <h3 className="font-medium">Telesales Executive</h3>
-                  <p className="text-muted-foreground">
-                    PureSkill InfoSolutions • Jul 2016 - Jun 2016
-                  </p>
-                  <p className="mt-2">
-                    Promoted courses on Cloud Computing and Software Development
-                    over calls.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+              </ul>
+            </Card>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

@@ -1,6 +1,14 @@
-<h1 align="center">Hi 👋, I'm Rakesh</h1>
-<h3 align="center">A passionate frontend developer from India</h3>
+# Rakesh Purohit
 
+Senior Frontend Engineer and DevRel crafting performance-first frontend systems, developer tooling, and delightful UI experiences.
+
+## Links
+- Portfolio: https://therakeshpurohit.com
+- Rocket blog: https://www.rocket.new/author/rakesh-purohit
+- DhiWise blog: https://www.dhiwise.com/author/rakesh-purohit
+- LinkedIn: https://linkedin.com/in/therakeshpurohit
+- GitHub: https://github.com/TheRakeshPurohit
+- X: https://x.com/irakeshpurohit
 
 <p align="left">
   <a href="https://twitter.com/irakeshpurohit" target="blank"
@@ -10,22 +18,49 @@
   /></a>
 </p>
 
-- 🔭 I’m currently working at [DhiWise](https://www.dhiwise.com/) - 🌱 I’m
-currently learning **NextJS, TypeScript** - 👯 I’m looking to collaborate on
-**Open source projects based on JavaScript and React** - 👨‍💻 All of my projects
-are available at [GitHub Repos](https://github.com/TheRakeshPurohit?tab=repositories&q=&type=source&language=&sort=)
-- 📝 I regularly write articles on [https://therakeshpurohit.medium.com/](https://therakeshpurohit.medium.com/) -
-💬 Ask me about **JavaScript, React, Babel, AST, WebPack, Compiling, Transpiling, Loaders** - ⚡ Fun fact **Whenever I call myself, it is busy though he is very responsive to texts.** ### Blogs posts
+## Highlights
+- 1M+ monthly users supported on a $70 infra budget via Vercel edge.
+- 1.8x faster latency using Redis HTML caching with auth/device variants; 30% lower compute cost.
+- 51.19% build-time reduction (17m -> 8m) with CRACO + esbuild.
+- Core Web Vitals improved to 90+ and 80% organic growth via Webflow -> Next.js + ISR.
+- India Quotient 30 Under 30 (2024).
 
+## What this repo is
+This is my personal portfolio built with Next.js App Router and a custom interactive UI/UX layer (sound cues, cursor states, motion, and 3D-inspired visuals). It is deployed as a static export for fast, low-cost hosting.
+
+## Tech Stack
+- Next.js 16 (App Router, static export)
+- React 19
+- Tailwind CSS 4
+- Radix UI primitives
+- next-mdx-remote for MDX writing
+
+## Run locally
+```bash
+npm install
+npm run dev
+```
+
+## Build + export
+```bash
+npm run build
+npm run start
+```
+Builds a static site into `out/` and serves it locally.
+
+## Content updates
+Edit `lib/content.ts` to update:
+- about info and metrics
+- experience timeline
+- credentials and writing links
+- projects and blog posts
+
+## Latest blog posts
 <!-- BLOG-POST-LIST:START -->
-- [How to integrate Xata into the ReactJS application using
-DhiWise?](https://medium.com/dhiwise/how-to-integrate-xata-into-the-reactjs-application-using-dhiwise-12ab8eeb9d2?source=rss-415d4a54ac94------2)
-- [How to integrate Twitter &amp; WhatsApp APIs with DhiWise in just 45
-minutes?](https://medium.com/dhiwise/how-to-integrate-twitter-whatsapp-apis-with-dhiwise-in-under-45-minutes-35509f56ddb9?source=rss-415d4a54ac94------2)
-- [Top 10 amazing chart libraries in
-React](https://medium.com/dhiwise/top-10-amazing-chart-libraries-in-react-322cb91fad62?source=rss-415d4a54ac94------2)
-- [From Figma’s design into React component using
-DhiWise](https://medium.com/dhiwise/from-figmas-design-into-react-component-using-dhiwise-bcea27144905?source=rss-415d4a54ac94------2)
+- [How to integrate Xata into the ReactJS application using DhiWise?](https://medium.com/dhiwise/how-to-integrate-xata-into-the-reactjs-application-using-dhiwise-12ab8eeb9d2?source=rss-415d4a54ac94------2)
+- [How to integrate Twitter & WhatsApp APIs with DhiWise in just 45 minutes?](https://medium.com/dhiwise/how-to-integrate-twitter-whatsapp-apis-with-dhiwise-in-under-45-minutes-35509f56ddb9?source=rss-415d4a54ac94------2)
+- [Top 10 amazing chart libraries in React](https://medium.com/dhiwise/top-10-amazing-chart-libraries-in-react-322cb91fad62?source=rss-415d4a54ac94------2)
+- [From Figma’s design into React component using DhiWise](https://medium.com/dhiwise/from-figmas-design-into-react-component-using-dhiwise-bcea27144905?source=rss-415d4a54ac94------2)
 <!-- BLOG-POST-LIST:END -->
 
 <p align="left">
@@ -71,7 +106,7 @@ DhiWise](https://medium.com/dhiwise/from-figmas-design-into-react-component-usin
   /></a>
 </p>
 
-<h3 align="left">Languages and Tools:</h3>
+## Languages and Tools
 <p align="left">
   <a href="https://babeljs.io/" target="_blank" rel="noreferrer">
     <img

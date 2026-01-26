@@ -1,168 +1,137 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import Link from 'next/link';
-import { ArrowLeft, Clock, Calendar } from 'lucide-react';
-import MDXContent from "./[slug]/mdx-content"
+import StructuredData from '@/components/structured-data';
+import { posts } from '@/lib/content';
+import { defaultOgImage, siteUrl } from '@/lib/seo';
 
-// Sample blog posts data - in a real app, this would come from a CMS or API
-const posts = {
-  'building-modern-web-app': {
-    title: 'Building a Modern Web Application with Next.js 13',
-    content: `
-# Building a Modern Web Application with Next.js 13
+export const dynamic = 'force-static';
 
-## Table of Contents
+const safePosts = Array.isArray(posts) ? posts : [];
 
-## Introduction
-
-Next.js 13 introduces revolutionary features that change how we build web applications. In this comprehensive guide, we'll explore the latest capabilities and best practices.
-
-## Server Components
-
-React Server Components represent a paradigm shift in how we think about component rendering. They allow us to:
-
-- Reduce client-side JavaScript
-- Improve initial page load
-- Better SEO performance
-
-## Data Fetching
-
-Next.js 13 simplifies data fetching with new patterns:
-
-\`\`\`typescript
-async function getData() {
-  const res = await fetch('https://api.example.com/data');
-  return res.json();
-}
-\`\`\`
-
-## Routing
-
-The new app directory provides:
-
-- Nested layouts
-- Route groups
-- Loading and error states
-- Server-side rendering
-
-## Conclusion
-
-Next.js 13 represents a significant step forward in web development, offering improved performance, better developer experience, and more powerful features.
-
-## Related Posts
-
-- Understanding TypeScript
-- React Best Practices
-- Modern CSS Techniques
-`,
-    date: '2024-03-15',
-    readTime: '5 min read',
-    author: 'John Doe',
+export const metadata: Metadata = {
+  title: 'Writing',
+  description:
+    'Essays on frontend performance, tooling, and scalable UI systems.',
+  alternates: {
+    canonical: '/blog',
   },
-  'power-of-server-components': {
-    title: 'The Power of Server Components in React',
-    content: 'Content for server components article...',
-    date: '2024-03-14',
-    readTime: '4 min read',
-    author: 'Jane Smith',
+  openGraph: {
+    type: 'website',
+    url: `${siteUrl}/blog`,
+    title: 'Writing',
+    description:
+      'Essays on frontend performance, tooling, and scalable UI systems.',
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: 'Writing by Rakesh Purohit',
+      },
+    ],
   },
-  'mastering-typescript': {
-    title: 'Mastering TypeScript: Best Practices',
-    content: 'Content for TypeScript article...',
-    date: '2024-03-13',
-    readTime: '6 min read',
-    author: 'Alex Johnson',
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Writing',
+    description:
+      'Essays on frontend performance, tooling, and scalable UI systems.',
+    images: [defaultOgImage],
   },
 };
 
-export async function generateStaticParams() {
-  return Object.keys(posts).map((slug) => ({
-    slug,
-  }));
-}
-
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = posts[params.slug as keyof typeof posts];
-
-  if (!post) {
-    return <div>Post not found</div>;
-  }
-
+export default function Blog() {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-8">
-        {/* Main Content */}
-        <div className="space-y-8">
-          <div>
-            <Button variant="ghost" asChild className="mb-4">
-              <Link href="/blog">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Blog
-              </Link>
-            </Button>
-            <h1 className="text-4xl font-bold">{post.title}</h1>
-            <div className="flex items-center space-x-4 mt-4 text-muted-foreground">
-              <div className="flex items-center">
-                <Calendar className="h-4 w-4 mr-2" />
-                <span>{post.date}</span>
+    <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 py-16 sm:px-6 lg:px-8">
+      <StructuredData
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Blog',
+          '@id': `${siteUrl}/blog#blog`,
+          url: `${siteUrl}/blog`,
+          name: 'Writing',
+          description:
+            'Essays on frontend performance, tooling, and scalable UI systems.',
+          isPartOf: {
+            '@id': `${siteUrl}/#website`,
+          },
+          ...(safePosts.length > 0
+            ? {
+                blogPost: safePosts.map((post) => ({
+                  '@type': 'BlogPosting',
+                  headline: post.title,
+                  datePublished: post.date,
+                  dateModified: post.date,
+                  url: `${siteUrl}/blog/${post.slug}`,
+                })),
+              }
+            : {}),
+        }}
+      />
+      <section className="space-y-4">
+        <p className="text-sm uppercase tracking-[0.3em] text-muted-foreground">
+          Writing
+        </p>
+        <h1 className="font-serif text-4xl text-foreground sm:text-5xl">
+          Notes on tooling, performance, and frontend craft.
+        </h1>
+        <p className="max-w-2xl text-muted-foreground">
+          A curated set of deep dives from the work behind frontend platforms.
+        </p>
+      </section>
+
+      <section className="grid gap-6 lg:grid-cols-3">
+        {safePosts.length > 0 ? (
+          safePosts.map((post) => (
+            <Card
+              key={post.slug}
+              className="border-border/60 bg-background/70 p-6 shadow-crisp transition hover:-translate-y-1 hover:shadow-glow"
+              data-cursor="card"
+            >
+              <div className="space-y-3">
+                <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  {post.date} · {post.readTime}
+                </p>
+                <h2 className="text-xl font-semibold text-foreground">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {post.title}
+                  </Link>
+                </h2>
+                <p className="text-sm text-muted-foreground">{post.summary}</p>
+                <div className="flex flex-wrap gap-2">
+                  {post.tags.map((tag) => (
+                    <Badge key={tag} variant="secondary" className="text-xs">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
               </div>
-              <div className="flex items-center">
-                <Clock className="h-4 w-4 mr-2" />
-                <span>{post.readTime}</span>
-              </div>
-            </div>
-          </div>
-
-          <MDXContent content={post.content} />
-
-          <div className="border-t pt-8">
-            <h2 className="text-2xl font-bold mb-4">Continue Reading</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Card className="p-6 hover:bg-muted/50 transition-colors">
-                <Link href="/blog/power-of-server-components">
-                  <h3 className="font-semibold mb-2">The Power of Server Components in React</h3>
-                  <p className="text-muted-foreground">Exploring the benefits and use cases of React Server Components.</p>
-                </Link>
-              </Card>
-              <Card className="p-6 hover:bg-muted/50 transition-colors">
-                <Link href="/blog/mastering-typescript">
-                  <h3 className="font-semibold mb-2">Mastering TypeScript: Best Practices</h3>
-                  <p className="text-muted-foreground">Essential TypeScript patterns and practices for writing maintainable code.</p>
-                </Link>
-              </Card>
-            </div>
-          </div>
-        </div>
-
-        {/* Table of Contents Sidebar */}
-        <aside className="hidden lg:block">
-          <div className="sticky top-8">
-            <Card className="p-6">
-              <h2 className="text-lg font-semibold mb-4">Table of Contents</h2>
-              <nav className="space-y-2 text-sm">
-                <Link href="#introduction" className="block text-muted-foreground hover:text-primary">
-                  Introduction
-                </Link>
-                <Link href="#server-components" className="block text-muted-foreground hover:text-primary">
-                  Server Components
-                </Link>
-                <Link href="#data-fetching" className="block text-muted-foreground hover:text-primary">
-                  Data Fetching
-                </Link>
-                <Link href="#routing" className="block text-muted-foreground hover:text-primary">
-                  Routing
-                </Link>
-                <Link href="#conclusion" className="block text-muted-foreground hover:text-primary">
-                  Conclusion
-                </Link>
-                <Link href="#related-posts" className="block text-muted-foreground hover:text-primary">
-                  Related Posts
-                </Link>
-              </nav>
             </Card>
-          </div>
-        </aside>
-      </div>
+          ))
+        ) : (
+          <Card className="border-border/60 bg-background/70 p-6 shadow-crisp">
+            <div className="space-y-3">
+              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                No posts yet
+              </p>
+              <h2 className="text-xl font-semibold text-foreground">
+                Fresh writing is on the way.
+              </h2>
+              <p className="text-sm text-muted-foreground">
+                Until then, explore the latest frontend builds and experiments.
+              </p>
+              <Button variant="outline" asChild>
+                <Link href="/projects">View projects</Link>
+              </Button>
+            </div>
+          </Card>
+        )}
+      </section>
     </div>
   );
 }
