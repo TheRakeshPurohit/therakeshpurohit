@@ -1,0 +1,260 @@
+---
+import Base from '@/layouts/Base.astro';
+import { site } from '@/utils/content';
+
+const title = `Work · ${site.name}`;
+const description =
+  'Content samples: long-form articles, campaign work, social strategy, and community — all from Rocket and DhiWise.';
+---
+
+<Base {title} {description} ogImage="/og/work.png">
+  <div class="container" style="padding-block: clamp(3rem, 8vw, 6rem);">
+
+    <!-- Header -->
+    <header class="mb-16">
+      <span class="section-label">Work</span>
+      <h1 class="section-title" style="font-size: clamp(2.5rem, 6vw, 4rem);">
+        Writing, campaigns,<br />and community.
+      </h1>
+      <p class="rh-body" style="max-width: 34rem;">
+        Five years of content strategy, technical writing, and community building at
+        Rocket (rocket.new, formerly DhiWise). Only facts from published, bylined work.
+      </p>
+    </header>
+
+    <!-- Long-form writing -->
+    <section aria-labelledby="longform-heading" class="mb-16">
+      <h2 id="longform-heading" class="section-title" style="font-size: 1.75rem;">
+        <span class="section-label">Long-form</span>
+        Technical essays and articles
+      </h2>
+      <div class="grid gap-6 md:grid-cols-2 mt-6">
+
+        <article class="sample-card reveal">
+          <span class="sample-type">Original essay · Oct 2026</span>
+          <a href="/writing/essay" class="sample-title">
+            The output is free now. Hire for the judgment.
+          </a>
+          <p class="sample-body">
+            When AI makes the output cheap, the scarce thing becomes knowing whether
+            the output is right — and what to do when it isn't. Written from real
+            experience rebuilding Rocket's Instagram and growing the Discord from
+            zero. About 1,250 words. Every source cited.
+          </p>
+          <a href="/writing/essay" class="rh-artifact">Read →</a>
+        </article>
+
+        <article class="sample-card reveal">
+          <span class="sample-type">Published on rocket.new · 30 Sep 2026 · ~2,150 words</span>
+          <a
+            href="https://rocket.new/blog/htmx-vs-react"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sample-title"
+          >
+            HTMX vs React (2026): Comparison Table, Checklist and When to Use Each
+          </a>
+          <p class="sample-body">
+            "Why is every second dev thread now questioning whether React is overkill
+            for most web pages?" Opens on a real engineering-culture argument, takes a
+            position, and gives a decision framework that works for both an engineer
+            and a founder.
+          </p>
+          <a
+            href="https://rocket.new/blog/htmx-vs-react"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rh-artifact"
+          >
+            Read on rocket.new →
+          </a>
+        </article>
+
+        <article class="sample-card reveal">
+          <span class="sample-type">Published on rocket.new · 30 Sep 2026 · ~2,200 words</span>
+          <a
+            href="https://rocket.new/blog/linear-mcp-server-how-to-connect-issue-tracker"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sample-title"
+          >
+            Linear MCP Server: How to Connect Your Issue Tracker to AI
+          </a>
+          <p class="sample-body">
+            Explains the Model Context Protocol plainly and accurately, gets the
+            OAuth and transport details right, and lands the concept for both a
+            developer and a product manager. Part of the 144 bylines on AI agents
+            and agentic tooling.
+          </p>
+          <a
+            href="https://rocket.new/blog/linear-mcp-server-how-to-connect-issue-tracker"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rh-artifact"
+          >
+            Read on rocket.new →
+          </a>
+        </article>
+
+        <article class="sample-card reveal">
+          <span class="sample-type">All 144 articles</span>
+          <a
+            href="https://rocket.new/author/rakesh-purohit"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sample-title"
+          >
+            rocket.new/author/rakesh-purohit
+          </a>
+          <p class="sample-body">
+            AI agents, MCP servers, framework trade-offs, SEO and AEO content built
+            to be cited by LLMs. Also on
+            <a href="https://dhiwise.com/author/rakesh-purohit" target="_blank" rel="noopener noreferrer">DhiWise</a> and
+            <a href="https://therakeshpurohit.medium.com" target="_blank" rel="noopener noreferrer">Medium</a>.
+          </p>
+          <a
+            href="https://rocket.new/author/rakesh-purohit"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rh-artifact"
+          >
+            All articles →
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Short posts -->
+    <section aria-labelledby="shortform-heading" class="mb-16">
+      <h2 id="shortform-heading" class="section-title" style="font-size: 1.75rem;">
+        <span class="section-label">Short posts</span>
+        X (Twitter)
+      </h2>
+      <div class="grid gap-6 md:grid-cols-2 mt-6">
+
+        <article class="sample-card reveal">
+          <span class="sample-type">X · 8 Sep 2026</span>
+          <a
+            href="https://x.com/iRakeshPurohit/status/2097339427336896910"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sample-title"
+          >
+            Headroom — context compression for AI agents
+          </a>
+          <p class="sample-body">
+            "Former Netflix engineer Tejas Chopra open-sourced Headroom, a local
+            context-compression layer for AI agents... One example cut 10,144 tokens
+            to 1,260 while preserving the same critical error." Hook on a credible
+            person, concrete numbers, one vivid proof point.
+          </p>
+          <a
+            href="https://x.com/iRakeshPurohit/status/2097339427336896910"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rh-artifact"
+          >
+            Read on X →
+          </a>
+        </article>
+
+        <article class="sample-card reveal">
+          <span class="sample-type">X · 10 Sep 2026</span>
+          <a
+            href="https://x.com/iRakeshPurohit/status/2098061684510474241"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="sample-title"
+          >
+            ffmpeg-skill — a local video editor for coding agents
+          </a>
+          <p class="sample-body">
+            "The useful part is the workflow." Skips the feature list and lands on
+            the one detail that matters: the agent probes the actual file first,
+            avoids re-encoding when possible, dry-runs the plan, then verifies the
+            output. Taste as an editorial move.
+          </p>
+          <a
+            href="https://x.com/iRakeshPurohit/status/2098061684510474241"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rh-artifact"
+          >
+            Read on X →
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Campaigns and community -->
+    <section aria-labelledby="campaigns-heading" class="mb-16">
+      <h2 id="campaigns-heading" class="section-title" style="font-size: 1.75rem;">
+        <span class="section-label">Campaigns &amp; community</span>
+        Strategy and operations
+      </h2>
+      <div class="grid gap-6 md:grid-cols-3 mt-6">
+
+        <article class="sample-card reveal">
+          <span class="sample-type">Campaign</span>
+          <p class="sample-title" style="cursor: default;">30Days30Usecases</p>
+          <p class="sample-body">
+            Project lead for a 30-day content campaign. 10 direct reports over
+            2 months. One published use case per day, each technically accurate
+            and audience-tested in Discord before shipping.
+          </p>
+        </article>
+
+        <article class="sample-card reveal">
+          <span class="sample-type">Social · @rocketdotnew</span>
+          <p class="sample-title" style="cursor: default;">Instagram strategy rebuild</p>
+          <p class="sample-body">
+            Rebuilt Rocket's Instagram strategy from the audience up. Posts went from
+            ~3 likes (mostly internal) to up to ~10k engagements per carousel.
+            Then planned the shift to Reels for short-form video.
+          </p>
+        </article>
+
+        <article class="sample-card reveal">
+          <span class="sample-type">Community</span>
+          <p class="sample-title" style="cursor: default;">Discord: 0 → 22k</p>
+          <p class="sample-body">
+            Grew the Rocket developer Discord from 0 to 22,000 members. Used as a
+            direct line to how developers react to the product and the content.
+            Also manages @rocketdotnew on X and contributes to long-form YouTube.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Engineering note -->
+    <section aria-labelledby="engineering-heading">
+      <h2 id="engineering-heading" class="section-title" style="font-size: 1.75rem;">
+        <span class="section-label">Why the tech is right</span>
+        Engineering work at Rocket
+      </h2>
+      <div class="rh-layout mt-6">
+        <div>
+          <p class="rh-body">
+            The writing is grounded in real engineering. He's not writing about
+            tools he hasn't used — he's shipped the Figma plugin with 100K+ users,
+            architected the Webflow-to-Next.js migration, served 1M+ monthly users
+            on a $70 infrastructure budget, and built the Gen-AI content workflow
+            that saves 20 developer hours a month.
+          </p>
+          <p class="rh-body" style="margin-top: 1rem;">
+            When he writes that MCP reduces context overhead or that ISR improves
+            SEO indexing time to two days, he's written it because he measured it.
+            That's the whole trick.
+          </p>
+        </div>
+        <aside class="rh-margin-note">
+          1M+ monthly users<br />$70 infra budget<br />Vercel edge<br />Core Web Vitals: 91/88
+        </aside>
+      </div>
+    </section>
+
+  </div>
+</Base>

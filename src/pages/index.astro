@@ -1,0 +1,384 @@
+---
+import Base from '@/layouts/Base.astro';
+import { site, socials, metrics } from '@/utils/content';
+
+const title = `${site.name} · ${site.role}`;
+const description = site.summary;
+
+const jsonLd = [
+  {
+    '@type': 'WebPage',
+    '@id': `${site.siteUrl}/#home`,
+    url: site.siteUrl,
+    name: title,
+    description,
+    isPartOf: { '@id': `${site.siteUrl}/#website` },
+  },
+];
+---
+
+<Base {title} {description} ogImage="/og/home.png" {jsonLd}>
+
+  <!-- ─── Hero ─────────────────────────────────────────────── -->
+  <section class="hero container" aria-labelledby="hero-name">
+    <span class="hero-eyebrow">DevRel Engineer · Rocket (rocket.new)</span>
+
+    <h1 id="hero-name" class="hero-name">
+      Rakesh<br />Purohit
+    </h1>
+
+    <p class="hero-tagline">
+      I write and ship code. Can't fake the tech — and that's the point.
+    </p>
+
+    <div class="flex flex-wrap gap-3 mb-10">
+      <a href="/work" class="btn btn-primary">See the work</a>
+      <a href="/writing" class="btn btn-ghost">Read the writing</a>
+    </div>
+
+    <p class="scroll-hint" aria-hidden="true">Scroll</p>
+  </section>
+
+  <!-- ─── Chapter 1: Surat, 2021 ───────────────────────────── -->
+  <section class="chapter chapter-hero" aria-label="Chapter: Surat, 2021">
+    <div style="position: relative; z-index: 1; padding-inline: 1.5rem;">
+      <span class="chapter-timestamp">Chapter One</span>
+      <h2 class="chapter-title reveal-fade">Surat,<br />2021.</h2>
+      <p class="chapter-subtitle reveal">The startup is called DhiWise. Code from day two.</p>
+    </div>
+    <div class="chapter-caption" aria-hidden="true">INT. SURAT OFFICE — DAY</div>
+  </section>
+
+  <section class="rabbit-hole" aria-label="Surat story">
+    <div class="container">
+      <div class="rh-layout">
+        <div>
+          <h3 class="rh-headline reveal">
+            He joined a startup building a code-generation platform for developers.
+            <span class="hl">Five years later it would become Rocket.</span>
+          </h3>
+          <p class="rh-body reveal">
+            On day one he was a React developer. By week two he was writing for
+            the blog, answering Discord questions, shipping Figma plugin code, and
+            running a content calendar. He didn't call it DevRel because no one did
+            at companies that size. He just showed up and did the things that needed
+            doing.
+          </p>
+          <a
+            href="https://rocket.new/author/rakesh-purohit"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rh-artifact reveal"
+          >
+            144 articles later → rocket.new/author/rakesh-purohit
+          </a>
+          <p class="rh-takeaway reveal">
+            "The first five years were about showing up."
+          </p>
+        </div>
+        <aside class="rh-margin-note" aria-label="Sidebar note">
+          Apr 2021<br />Surat, Gujarat<br />DevRel + frontend<br />from day one
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Chapter 2: The Rewrite ───────────────────────────── -->
+  <section class="chapter" aria-label="Chapter: The Rewrite">
+    <div style="position: relative; z-index: 1; padding-inline: 1.5rem;">
+      <span class="chapter-timestamp">Chapter Two</span>
+      <h2 class="chapter-title reveal-fade">The<br />Rewrite.</h2>
+      <p class="chapter-subtitle reveal">Webflow → Next.js ISR. Traffic goes up 80%.</p>
+    </div>
+    <div class="chapter-caption" aria-hidden="true">EXT. SEARCH RESULTS — BEFORE AND AFTER</div>
+  </section>
+
+  <section class="rabbit-hole" aria-label="The rewrite story">
+    <div class="container">
+      <div class="rh-layout">
+        <div>
+          <h3 class="rh-headline reveal">
+            He migrated the marketing site from Webflow to Next.js with ISR, and
+            <span class="hl">organic traffic grew 80% in the first quarter.</span>
+          </h3>
+          <p class="rh-body reveal">
+            The migration was technical work: structured JSON-LD, 2-day Google
+            indexing via API, static generation for editorial pages, ISR for
+            dynamic content. But the result was measured in search rankings and
+            reader numbers. Core Web Vitals went from 33 to 91 on desktop, 38 to
+            88 on mobile. The engineering served the content strategy, not the
+            other way around.
+          </p>
+          <p class="rh-body reveal">
+            The same logic — make the tech serve the story — is how he thinks about
+            every tool he writes about. It's harder than it sounds. Most technical
+            content either undersells the engineering or oversells the feature. He
+            tries to find the number that makes both an engineer and a founder stop
+            scrolling.
+          </p>
+          <p class="rh-takeaway reveal">
+            "10K+ monthly readers on the DhiWise blog. Pages in top-10 search rankings."
+          </p>
+        </div>
+        <aside class="rh-margin-note" aria-label="Sidebar note">
+          Webflow → Next.js<br />JSON-LD + ISR<br />CWV 33→91 desktop<br />38→88 mobile
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Chapter 3: 0 to 22k ──────────────────────────────── -->
+  <section class="chapter" aria-label="Chapter: 0 to 22k">
+    <div style="position: relative; z-index: 1; padding-inline: 1.5rem;">
+      <span class="chapter-timestamp">Chapter Three</span>
+      <h2 class="chapter-title reveal-fade">0 to<br />22k.</h2>
+      <p class="chapter-subtitle reveal">A Discord. Built from scratch.</p>
+    </div>
+    <div class="chapter-caption" aria-hidden="true">INT. DISCORD SERVER — CONTINUOUS</div>
+  </section>
+
+  <section class="rabbit-hole" aria-label="Discord story">
+    <div class="container">
+      <div class="rh-layout">
+        <div>
+          <h3 class="rh-headline reveal">
+            He started the Rocket developer community on Discord from zero
+            members and built it to
+            <span class="hl">22,000 developers.</span>
+          </h3>
+          <p class="rh-body reveal">
+            He uses it as a direct line to how developers react to the product and
+            the content. What gets ignored. What gets fifteen follow-ups in thirty
+            minutes. Which tutorials get bookmarked and which ones disappear. That
+            signal is harder to buy than a research budget — you earn it by being
+            present and not treating the community as a broadcast channel.
+          </p>
+          <p class="rh-body reveal">
+            The community also shapes the writing. A question that keeps coming back
+            in #general is a topic brief. A complaint thread is a documentation bug.
+            A showcase post is a proof point. The feedback loop runs both ways.
+          </p>
+          <p class="rh-takeaway reveal">
+            "The Discord is a product insight engine disguised as a chat server."
+          </p>
+        </div>
+        <aside class="rh-margin-note" aria-label="Sidebar note">
+          0 → 22k members<br />Direct product<br />feedback loop<br />ongoing
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Chapter 4: 3 Likes to ~10k ──────────────────────── -->
+  <section class="chapter" aria-label="Chapter: Instagram">
+    <div style="position: relative; z-index: 1; padding-inline: 1.5rem;">
+      <span class="chapter-timestamp">Chapter Four</span>
+      <h2 class="chapter-title reveal-fade">3 likes<br />to ~10k.</h2>
+      <p class="chapter-subtitle reveal">One carousel. @rocketdotnew.</p>
+    </div>
+    <div class="chapter-caption" aria-hidden="true">EXT. INSTAGRAM FEED — NIGHT</div>
+  </section>
+
+  <section class="rabbit-hole" aria-label="Instagram story">
+    <div class="container">
+      <div class="rh-layout">
+        <div>
+          <h3 class="rh-headline reveal">
+            He rebuilt Rocket's Instagram strategy from the audience up, not the
+            content calendar down.
+            <span class="hl">Posts went from ~3 likes to up to ~10k engagements.</span>
+          </h3>
+          <p class="rh-body reveal">
+            The original strategy was producing content that the team liked. That's
+            the wrong audience. He stopped, re-read everything the platform had
+            produced, and spent a week learning about the people Rocket was actually
+            trying to reach before writing a single word of new copy. The prompts he'd
+            been using were confident and wrong. The fix wasn't better prompting — it
+            was better understanding.
+          </p>
+          <p class="rh-body reveal">
+            That reset is the core of the essay on this site about AI and judgment.
+            The Instagram story is where the argument came from.
+          </p>
+          <a href="/writing/essay" class="rh-artifact reveal">
+            Read the essay: The output is free now →
+          </a>
+          <p class="rh-takeaway reveal">
+            "The model was fluent and aimed at the wrong people. Prompting harder wouldn't have fixed it."
+          </p>
+        </div>
+        <aside class="rh-margin-note" aria-label="Sidebar note">
+          @rocketdotnew<br />~3 likes → ~10k<br />engagements/post<br />strategy rebuild
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Chapter 5: 144 Bylines ───────────────────────────── -->
+  <section class="chapter" aria-label="Chapter: 144 Bylines">
+    <div style="position: relative; z-index: 1; padding-inline: 1.5rem;">
+      <span class="chapter-timestamp">Chapter Five</span>
+      <h2 class="chapter-title reveal-fade">144<br />bylines.</h2>
+      <p class="chapter-subtitle reveal">AI agents. MCP. The stack behind them.</p>
+    </div>
+    <div class="chapter-caption" aria-hidden="true">INT. TEXT EDITOR — EVERY DAY</div>
+  </section>
+
+  <section class="rabbit-hole" aria-label="Writing story">
+    <div class="container">
+      <div class="rh-layout">
+        <div>
+          <h3 class="rh-headline reveal">
+            Every article he's published, he's built with the tool he's writing
+            about first.
+            <span class="hl">That's the whole trick.</span>
+          </h3>
+          <p class="rh-body reveal">
+            Writing about MCP servers means running MCP servers. Writing about AI
+            app builders means shipping features with them. The rule is simple: if
+            he can't build a working example, he doesn't publish the article. This
+            makes the research slower and the editing harder. It also makes the
+            writing accurate in a way that's hard to fake.
+          </p>
+          <p class="rh-body reveal">
+            His daily workflow: Claude Code, Codex, and Cursor. His job in that
+            loop is asking the right questions and judging what comes back. He's
+            written a long essay about what that actually means — and it isn't
+            about prompt engineering.
+          </p>
+          <div class="flex flex-wrap gap-4 mt-6">
+            <a
+              href="https://rocket.new/blog/htmx-vs-react"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rh-artifact"
+            >
+              HTMX vs React (2026) →
+            </a>
+            <a
+              href="https://rocket.new/blog/linear-mcp-server-how-to-connect-issue-tracker"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rh-artifact"
+            >
+              Linear MCP Server →
+            </a>
+          </div>
+          <p class="rh-takeaway reveal">
+            "Give me a dense technical topic and I'll find the detail an engineer and a CEO both stop for."
+          </p>
+        </div>
+        <aside class="rh-margin-note" aria-label="Sidebar note">
+          144 articles<br />rocket.new<br />+ DhiWise blog<br />10K+ mo. readers
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Chapter 6: The Builder ───────────────────────────── -->
+  <section class="chapter" aria-label="Chapter: The Builder">
+    <div style="position: relative; z-index: 1; padding-inline: 1.5rem;">
+      <span class="chapter-timestamp">Chapter Six</span>
+      <h2 class="chapter-title reveal-fade">The<br />builder.</h2>
+      <p class="chapter-subtitle reveal">ReactTestGen. Figma plugin. 100K+ users.</p>
+    </div>
+    <div class="chapter-caption" aria-hidden="true">INT. VS CODE — LATE EVENING</div>
+  </section>
+
+  <section class="rabbit-hole" aria-label="Builder story">
+    <div class="container">
+      <div class="rh-layout">
+        <div>
+          <h3 class="rh-headline reveal">
+            He doesn't just write about tools. He ships them.
+            <span class="hl">100K+ users on the Figma plugin alone.</span>
+          </h3>
+          <p class="rh-body reveal">
+            The Figma plugin was engineering work that improved the core product
+            acquisition flow by 30%. The VS Code extension (ReactTestGen) generates
+            React component test cases from source — the kind of thing that actually
+            saves time at 4pm when you owe your team three more tests. He maintains
+            the Gujarati translation of the React documentation. He's submitted a CFP
+            to React India 2025.
+          </p>
+          <p class="rh-body reveal">
+            The builder instinct is also why the content is technically accurate.
+            He's the person in the team most likely to have run the code in the
+            article before the article exists.
+          </p>
+          <a href="/projects" class="rh-artifact reveal">
+            See all projects →
+          </a>
+          <p class="rh-takeaway reveal">
+            "Shipping a tool and writing about it are the same research process."
+          </p>
+        </div>
+        <aside class="rh-margin-note" aria-label="Sidebar note">
+          Figma plugin<br />100K+ users · 5K MAU<br />ReactTestGen<br />gu.react.dev maintainer
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Chapter 7: Next: Bengaluru ───────────────────────── -->
+  <section class="chapter" aria-label="Chapter: Next Bengaluru">
+    <div style="position: relative; z-index: 1; padding-inline: 1.5rem;">
+      <span class="chapter-timestamp">Chapter Seven</span>
+      <h2 class="chapter-title reveal-fade">Next:<br />Bengaluru.</h2>
+      <p class="chapter-subtitle reveal">Relocating. Ready for what's next.</p>
+    </div>
+    <div class="chapter-caption" aria-hidden="true">TITLE CARD</div>
+  </section>
+
+  <!-- ─── Impact metrics ───────────────────────────────────── -->
+  <section class="rabbit-hole" aria-labelledby="metrics-heading">
+    <div class="container">
+      <h2 id="metrics-heading" class="section-title reveal">
+        <span class="section-label">By the numbers</span>
+        Five years of shipping.
+      </h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-6">
+        {metrics.map(({ value, label }) => (
+          <div class="metric reveal">
+            <div class="metric-value">{value}</div>
+            <p class="metric-label">{label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact CTA ──────────────────────────────────────── -->
+  <section
+    class="rabbit-hole"
+    style="border-bottom: none; padding-bottom: 6rem;"
+    aria-labelledby="contact-heading"
+  >
+    <div class="container">
+      <h2 id="contact-heading" class="section-title reveal">
+        <span class="section-label">Contact</span>
+        Let's work together.
+      </h2>
+      <p class="rh-body reveal" style="margin-bottom: 2rem;">
+        Available for content strategy, DevRel roles, and technical writing.
+        Based in Surat, relocating to Bengaluru.
+      </p>
+      <div class="flex flex-wrap gap-4 items-center">
+        <a href={`mailto:${site.email}`} class="btn btn-primary reveal">
+          {site.email}
+        </a>
+        {socials.map(({ label, href }) => (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rh-artifact reveal"
+          >
+            {label} →
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Base>

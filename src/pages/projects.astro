@@ -1,0 +1,87 @@
+---
+import Base from '@/layouts/Base.astro';
+import { site, projects } from '@/utils/content';
+
+const title = `Projects · ${site.name}`;
+const description =
+  'Open source tools and side projects: a VS Code extension, a Figma plugin, Chrome extension, and the Gujarati React documentation.';
+
+const jsonLd = [
+  {
+    '@type': 'CollectionPage',
+    '@id': `${site.siteUrl}/projects#projects`,
+    url: `${site.siteUrl}/projects`,
+    name: `Projects · ${site.name}`,
+    description,
+    isPartOf: { '@id': `${site.siteUrl}/#website` },
+    hasPart: projects.map((p) => ({
+      '@type': 'SoftwareApplication',
+      name: p.title,
+      description: p.description,
+      codeRepository: p.github,
+      ...(p.demo ? { url: p.demo } : {}),
+    })),
+  },
+];
+---
+
+<Base {title} {description} ogImage="/og/projects.png" canonical="/projects" {jsonLd}>
+  <div class="container" style="padding-block: clamp(3rem, 8vw, 6rem);">
+
+    <header class="mb-12">
+      <span class="section-label">Projects</span>
+      <h1 class="section-title" style="font-size: clamp(2.5rem, 6vw, 4rem);">
+        Tools and open source work.
+      </h1>
+      <p class="rh-body" style="max-width: 34rem;">
+        Things built for developers, by a developer. Mostly VS Code extensions, browser
+        plugins, and open source contributions. All source on GitHub.
+      </p>
+    </header>
+
+    <ul class="grid gap-5 sm:grid-cols-2 list-none p-0 m-0" role="list">
+      {projects.map((project) => (
+        <li>
+          <article class="project-card reveal" style="height: 100%; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div class="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span style="font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h2 style="font-family: var(--font-serif); font-size: 1.25rem; font-weight: 300; color: var(--fg); line-height: 1.3; flex: 1;">
+              {project.title}
+            </h2>
+            <p style="font-size: 0.9375rem; color: var(--muted); line-height: 1.6;">
+              {project.description}
+            </p>
+            <div class="flex flex-wrap gap-4 mt-2">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="rh-artifact"
+                style="margin-top: 0;"
+              >
+                GitHub →
+              </a>
+              {project.demo && (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="rh-artifact"
+                  style="margin-top: 0;"
+                >
+                  {project.demo.includes('marketplace') ? 'Marketplace →' : 'Demo →'}
+                </a>
+              )}
+            </div>
+          </article>
+        </li>
+      ))}
+    </ul>
+
+  </div>
+</Base>

@@ -1,0 +1,38 @@
+---
+import Base from '@/layouts/Base.astro';
+import { site } from '@/utils/content';
+---
+
+<Base
+  title={`404 · ${site.name}`}
+  description="Page not found."
+  ogImage="/og/404.png"
+>
+  <div
+    class="container"
+    style="
+      min-height: 70svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-block: 6rem;
+    "
+  >
+    <span class="section-label">404</span>
+    <h1
+      class="hero-name"
+      style="font-size: clamp(4rem, 12vw, 9rem); margin-bottom: 1.5rem; line-height: 0.95;"
+    >
+      This scene<br />was cut.
+    </h1>
+    <p class="rh-body" style="max-width: 28rem; margin-bottom: 2rem;">
+      The page you're looking for doesn't exist or was moved.
+      Let's get you back to something real.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a href="/" class="btn btn-primary">Home</a>
+      <a href="/work" class="btn btn-ghost">Work</a>
+      <a href="/writing" class="btn btn-ghost">Writing</a>
+    </div>
+  </div>
+</Base>

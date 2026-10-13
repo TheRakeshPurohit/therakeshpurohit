@@ -1,0 +1,104 @@
+---
+import { site } from '@/utils/content';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  publishedTime?: string;
+  jsonLd?: object[];
+}
+
+const {
+  title,
+  description,
+  ogImage = '/og/home.png',
+  canonical,
+  type = 'website',
+  publishedTime,
+  jsonLd = [],
+} = Astro.props;
+
+const siteUrl = site.siteUrl;
+const canonicalUrl = canonical
+  ? new URL(canonical, siteUrl).toString()
+  : new URL(Astro.url.pathname, siteUrl).toString();
+const ogImageAbsolute = new URL(ogImage, siteUrl).toString();
+
+const personSchema = {
+  '@type': 'Person',
+  '@id': `${siteUrl}/#person`,
+  name: site.name,
+  url: siteUrl,
+  email: site.email,
+  jobTitle: site.role,
+  worksFor: {
+    '@type': 'Organization',
+    name: site.worksFor,
+    url: site.worksForUrl,
+  },
+  sameAs: [
+    'https://github.com/TheRakeshPurohit',
+    'https://linkedin.com/in/therakeshpurohit',
+    'https://x.com/irakeshpurohit',
+  ],
+};
+
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  name: site.name,
+  url: siteUrl,
+  description: site.summary,
+  inLanguage: 'en',
+  author: { '@id': `${siteUrl}/#person` },
+};
+
+const graph = [personSchema, websiteSchema, ...jsonLd];
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#111010" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Preconnect for fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+
+<!-- RSS autodiscovery -->
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={`${site.name} · Writing`}
+  href={`${siteUrl}/rss.xml`}
+/>
+
+<!-- OG -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:image" content={ogImageAbsolute} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+{publishedTime && <meta property="article:published_time" content={publishedTime} />}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageAbsolute} />
+<meta name="twitter:creator" content="@irakeshpurohit" />
+
+<!-- JSON-LD -->
+<script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })} />
+
+<!-- Favicon (inline SVG as data URI for zero extra requests) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23D4A853'/><text x='6' y='24' font-size='22' font-family='Georgia,serif' fill='%23111010' font-weight='700'>R</text></svg>" />

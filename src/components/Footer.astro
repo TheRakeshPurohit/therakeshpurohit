@@ -1,0 +1,59 @@
+---
+import { site, socials } from '@/utils/content';
+---
+
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="grid gap-8 md:grid-cols-[1fr_auto]">
+
+      <!-- Left: contact -->
+      <div class="flex flex-col gap-4">
+        <p class="section-label">Get in touch</p>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a
+            href={`mailto:${site.email}`}
+            class="btn btn-primary text-sm"
+            style="font-size: 0.875rem;"
+          >
+            {site.email}
+          </a>
+          {socials.map(({ label, href }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="nav-link"
+              style="font-size: 0.875rem;"
+            >
+              {label} ↗
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right: site links -->
+      <nav aria-label="Footer navigation">
+        <ul class="list-none m-0 p-0 flex flex-col gap-2 text-right" role="list">
+          <li><a href="/work"     class="nav-link" style="font-size: 0.8125rem;">Work</a></li>
+          <li><a href="/projects" class="nav-link" style="font-size: 0.8125rem;">Projects</a></li>
+          <li><a href="/writing"  class="nav-link" style="font-size: 0.8125rem;">Writing</a></li>
+          <li><a href="/about"    class="nav-link" style="font-size: 0.8125rem;">About</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Credits roll -->
+    <div class="credits-roll mt-10 pt-8" style="border-top: 1px solid var(--border);">
+      <p style="color: var(--muted); font-size: 0.8125rem; line-height: 1.8;">
+        Built by Rakesh Purohit with
+        <span style="color: var(--fg);">Astro 7 · Tailwind CSS 4 · Vercel</span><br />
+        AI tools in the loop:
+        <span style="color: var(--fg);">Claude Code · Codex · Cursor</span><br />
+        Judgment: entirely human.
+      </p>
+      <p style="color: var(--muted); font-size: 0.75rem; margin-top: 0.75rem;">
+        &copy; {new Date().getFullYear()} {site.name} &middot; Surat, Gujarat
+      </p>
+    </div>
+  </div>
+</footer>

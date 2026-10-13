@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import { site } from '@/utils/content';
+
+const posts = (await getCollection('writing')).sort(
+  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+);
+
+const title = `Writing · ${site.name}`;
+const description =
+  'Essays on AI, developer tools, content strategy, and the judgment required to use them well.';
+
+const jsonLd = [
+  {
+    '@type': 'Blog',
+    '@id': `${site.siteUrl}/writing#blog`,
+    url: `${site.siteUrl}/writing`,
+    name: 'Writing',
+    description,
+    inLanguage: 'en',
+    isPartOf: { '@id': `${site.siteUrl}/#website` },
+    blogPost: posts.map((p) => ({
+      '@type': 'BlogPosting',
+      headline: p.data.title,
+      datePublished: new Date(p.data.date).toISOString(),
+      url: `${site.siteUrl}/writing/${p.id}`,
+    })),
+  },
+];
+---
+
+<Base {title} {description} ogImage="/og/writing.png" canonical="/writing" {jsonLd}>
+  <div class="container" style="padding-block: clamp(3rem, 8vw, 6rem);">
+
+    <header class="mb-12">
+      <span class="section-label">Writing</span>
+      <h1 class="section-title" style="font-size: clamp(2.5rem, 6vw, 4rem);">
+        Essays and long reads.
+      </h1>
+      <p class="rh-body" style="max-width: 34rem;">
+        All bylined. All grounded in things I've actually built, measured,
+        or shipped. No keyword farms.
+      </p>
+    </header>
+
+    {posts.length === 0 ? (
+      <p class="rh-body">More writing coming soon. In the meantime, see <a href="/work">the work page</a> for published samples.</p>
+    ) : (
+      <ul class="list-none p-0 m-0" role="list">
+        {posts.map((post) => {
+          const dateStr = new Date(post.data.date).toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'short',
+            year: 'numeric',
+          });
+          return (
+            <li>
+              <article class="post-card reveal">
+                <div class="flex flex-wrap items-center gap-3">
+                  <time
+                    datetime={new Date(post.data.date).toISOString()}
+                    class="post-date"
+                  >
+                    {dateStr}
+                  </time>
+                  {post.data.readTime && (
+                    <span class="post-date">{post.data.readTime}</span>
+                  )}
+                  {post.data.tags?.map((tag) => (
+                    <span style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a href={`/writing/${post.id}`} class="post-title">
+                  {post.data.title}
+                </a>
+                <p class="post-summary">{post.data.description}</p>
+              </article>
+            </li>
+          );
+        })}
+      </ul>
+    )}
+
+  </div>
+</Base>

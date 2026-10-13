@@ -1,0 +1,116 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '@/layouts/Base.astro';
+import { site } from '@/utils/content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateStr = new Date(post.data.date).toLocaleDateString('en-GB', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+
+const ogImage = `/og/${post.id}.png`;
+const canonicalUrl = `/writing/${post.id}`;
+
+const jsonLd = [
+  {
+    '@type': 'BlogPosting',
+    '@id': `${site.siteUrl}/writing/${post.id}#post`,
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: new Date(post.data.date).toISOString(),
+    dateModified: new Date(post.data.date).toISOString(),
+    inLanguage: 'en',
+    author: { '@id': `${site.siteUrl}/#person` },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${site.siteUrl}/writing/${post.id}`,
+    },
+    image: `${site.siteUrl}${ogImage}`,
+    keywords: post.data.tags?.join(', '),
+  },
+];
+---
+
+<Base
+  title={`${post.data.title} · ${site.name}`}
+  description={post.data.description}
+  ogImage={ogImage}
+  canonical={canonicalUrl}
+  type="article"
+  publishedTime={new Date(post.data.date).toISOString()}
+  {jsonLd}
+>
+  <div class="container" style="padding-block: clamp(3rem, 8vw, 5rem);">
+
+    <!-- Back link -->
+    <nav aria-label="Breadcrumb" style="margin-bottom: 2.5rem;">
+      <a
+        href="/writing"
+        class="rh-artifact"
+        style="margin-top: 0; font-size: 0.8125rem;"
+      >
+        ← All writing
+      </a>
+    </nav>
+
+    <!-- Post header -->
+    <header style="max-width: 42rem; margin-bottom: 3rem;">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <time
+          datetime={new Date(post.data.date).toISOString()}
+          class="post-date"
+        >
+          {dateStr}
+        </time>
+        {post.data.readTime && (
+          <span class="post-date">{post.data.readTime}</span>
+        )}
+        {post.data.tags?.map((tag) => (
+          <span style="font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent);">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h1
+        style="
+          font-family: var(--font-serif);
+          font-size: clamp(2rem, 5vw, 3rem);
+          font-weight: 300;
+          line-height: 1.15;
+          color: var(--fg);
+          margin: 0 0 1rem;
+        "
+      >
+        {post.data.title}
+      </h1>
+      <p style="font-size: 1.0625rem; color: var(--muted); line-height: 1.6; margin: 0;">
+        {post.data.description}
+      </p>
+    </header>
+
+    <!-- Post body -->
+    <article class="prose">
+      <Content />
+    </article>
+
+    <!-- Footer attribution -->
+    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+      <p style="font-size: 0.875rem; color: var(--muted);">
+        By <a href="/about" style="color: var(--accent);">{site.name}</a> · {site.role} at {site.worksFor}
+      </p>
+    </footer>
+
+  </div>
+</Base>

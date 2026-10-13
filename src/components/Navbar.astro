@@ -1,0 +1,142 @@
+---
+import { site } from '@/utils/content';
+
+const nav = [
+  { label: 'Work',     href: '/work' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Writing',  href: '/writing' },
+  { label: 'About',    href: '/about' },
+];
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class="nav" role="banner">
+  <div class="container">
+    <nav
+      class="flex items-center justify-between gap-6 h-14"
+      aria-label="Main navigation"
+    >
+      <a href="/" class="font-serif text-lg leading-none" style="color: var(--fg); text-decoration: none;" aria-label="Rakesh Purohit, home">
+        Rakesh Purohit
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="hidden md:flex items-center gap-6 list-none m-0 p-0" role="list">
+        {nav.map(({ label, href }) => {
+          const isActive = pathname === href || pathname.startsWith(href + '/');
+          return (
+            <li>
+              <a
+                href={href}
+                class="nav-link"
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+
+      <div class="flex items-center gap-3">
+        <a
+          href={`mailto:${site.email}`}
+          class="btn btn-ghost hidden sm:inline-flex text-xs"
+          style="padding: 0.375rem 0.875rem;"
+        >
+          Contact
+        </a>
+
+        <!-- Theme toggle -->
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Toggle colour theme"
+          type="button"
+        >
+          <span id="theme-icon" aria-hidden="true">◐</span>
+        </button>
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="theme-toggle md:hidden"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          type="button"
+        >
+          <span aria-hidden="true">☰</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div
+      id="mobile-menu"
+      class="md:hidden"
+      style="display: none; padding-bottom: 1rem; border-top: 1px solid var(--border);"
+      role="dialog"
+      aria-label="Mobile navigation"
+    >
+      <ul class="list-none m-0 p-0 pt-3 flex flex-col gap-1" role="list">
+        {nav.map(({ label, href }) => {
+          const isActive = pathname === href || pathname.startsWith(href + '/');
+          return (
+            <li>
+              <a
+                href={href}
+                class="nav-link block py-2"
+                aria-current={isActive ? 'page' : undefined}
+                style="font-size: 1rem;"
+              >
+                {label}
+              </a>
+            </li>
+          );
+        })}
+        <li>
+          <a href={`mailto:${site.email}`} class="nav-link block py-2" style="font-size: 1rem;">
+            Contact
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Theme initialisation — runs before first paint (inline in layout)
+  // This script handles the toggle button after hydration.
+  const btn = document.getElementById('theme-toggle') as HTMLButtonElement | null;
+  const icon = document.getElementById('theme-icon') as HTMLElement | null;
+
+  function getTheme() {
+    return document.documentElement.getAttribute('data-theme') ?? 'dark';
+  }
+
+  function applyIcon(theme: string) {
+    if (icon) icon.textContent = theme === 'dark' ? '◑' : '◐';
+  }
+
+  applyIcon(getTheme());
+
+  btn?.addEventListener('click', () => {
+    const next = getTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+    applyIcon(next);
+  });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('mobile-menu-btn') as HTMLButtonElement | null;
+  const mobileMenu = document.getElementById('mobile-menu') as HTMLElement | null;
+
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.style.display === 'block';
+    if (mobileMenu) mobileMenu.style.display = isOpen ? 'none' : 'block';
+    menuBtn.setAttribute('aria-expanded', String(!isOpen));
+    menuBtn.querySelector('span')!.textContent = isOpen ? '☰' : '✕';
+  });
+</script>
