@@ -29,7 +29,6 @@ Animation is driven entirely by CSS `animation-timeline: view()` scroll-driven a
 | [Astro](https://astro.build) | 7.3.8 |
 | [Tailwind CSS](https://tailwindcss.com) | 4.3.3 |
 | [@tailwindcss/vite](https://github.com/tailwindlabs/tailwindcss) | 4.3.3 |
-| [@astrojs/sitemap](https://docs.astro.build/en/guides/integrations-guide/sitemap/) | 3.7.4 |
 | [@astrojs/rss](https://docs.astro.build/en/guides/rss/) | 4.0.19 |
 | [satori](https://github.com/vercel/satori) | 0.52.0 |
 | [sharp](https://sharp.pixelplumbing.com) | 0.35.5 |
@@ -44,11 +43,11 @@ Astro was chosen over Next.js because it ships zero JavaScript by default — th
 - **Static output** — `output: 'static'`, hosted on Vercel's CDN edge
 - **OG images** — 1200×630 PNG per page and per post, generated at `astro build` via satori + sharp; no SVG fallback
 - **RSS** — `/rss.xml` covering all posts; autodiscovery `<link>` in every page `<head>`
-- **Sitemap** — `/sitemap-index.xml` via `@astrojs/sitemap`
+- **Sitemap** — `/sitemap.xml` hand-generated at build time (6 URLs: 5 static pages + 1 post per collection entry), `lastmod` from post date for posts and build date for static pages; `robots.txt` `Sitemap:` points here
 - **JSON-LD** — `Person` (jobTitle, worksFor, sameAs), `WebSite`, `BlogPosting` per post
 - **Canonical host** — `www.therakeshpurohit.com`; `vercel.json` 301-redirects the apex domain
 - **Cache headers** — `immutable` for hashed `/_astro/*` assets; `s-maxage=86400, stale-while-revalidate=86400` for HTML
-- **robots.txt** — no non-standard `Host:` line
+- **`<head>` completeness** — every page includes: charset, viewport, generator, dual theme-color, title, description, robots (noindex on 404), author/creator/publisher, canonical, rel=author/me, sitemap link, RSS alternate, apple-touch-icon, webmanifest, full OG (type, url, title, description, site_name, locale, image+type+dimensions+alt), full Twitter card (card, site, creator, title, description, image+alt), article:published\_time/modified\_time/author/tag on posts, JSON-LD
 - **Accessibility** — semantic landmarks, skip link, `focus-visible` states, `aria-current`, `aria-label`, alt text throughout
 
 ---

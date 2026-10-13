@@ -1,0 +1,16 @@
+{
+  "name": "Rakesh Purohit",
+  "short_name": "Rakesh",
+  "description": "DevRel Engineer at Rocket. Cinematic portfolio.",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#111010",
+  "theme_color": "#D4A853",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

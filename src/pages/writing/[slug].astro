@@ -22,6 +22,7 @@ const dateStr = new Date(post.data.date).toLocaleDateString('en-GB', {
 
 const ogImage = `/og/${post.id}.png`;
 const canonicalUrl = `/writing/${post.id}`;
+const isoDate = new Date(post.data.date).toISOString();
 
 const jsonLd = [
   {
@@ -47,9 +48,13 @@ const jsonLd = [
   title={`${post.data.title} · ${site.name}`}
   description={post.data.description}
   ogImage={ogImage}
+  ogImageAlt={post.data.title}
   canonical={canonicalUrl}
   type="article"
-  publishedTime={new Date(post.data.date).toISOString()}
+  publishedTime={isoDate}
+  modifiedTime={isoDate}
+  articleAuthor={site.name}
+  tags={post.data.tags}
   {jsonLd}
 >
   <div class="container" style="padding-block: clamp(3rem, 8vw, 5rem);">

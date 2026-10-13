@@ -8,9 +8,14 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  ogImageAlt?: string;
   canonical?: string;
   type?: 'website' | 'article';
+  noindex?: boolean;
   publishedTime?: string;
+  modifiedTime?: string;
+  articleAuthor?: string;
+  tags?: string[];
   jsonLd?: object[];
 }
 
