@@ -1,13 +1,7 @@
 ---
-import { site } from '@/utils/content';
+import { site, pages } from '@/utils/content';
 
-const nav = [
-  { label: 'Work',     href: '/work' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Writing',  href: '/writing' },
-  { label: 'About',    href: '/about' },
-];
-
+const nav = pages.filter((p) => p.href !== '/');
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 ---
 

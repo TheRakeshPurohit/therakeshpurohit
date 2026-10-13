@@ -11,15 +11,14 @@ let cachedFonts: Array<{ name: string; data: ArrayBuffer; weight: 400 | 700; sty
 
 function getFonts() {
   if (cachedFonts) return cachedFonts;
-  const base = require.resolve('@fontsource/inter/package.json').replace('package.json', 'files/');
-  const rBuf = readFileSync(base + 'inter-latin-400-normal.woff');
-  const bBuf = readFileSync(base + 'inter-latin-700-normal.woff');
-  // Slice to avoid shared ArrayBuffer issues
+  const base = require.resolve('@fontsource/space-grotesk/package.json').replace('package.json', 'files/');
+  const rBuf = readFileSync(base + 'space-grotesk-latin-400-normal.woff');
+  const bBuf = readFileSync(base + 'space-grotesk-latin-700-normal.woff');
   const regular = rBuf.buffer.slice(rBuf.byteOffset, rBuf.byteOffset + rBuf.byteLength) as ArrayBuffer;
-  const bold    = bBuf.buffer.slice(bBuf.byteOffset, bBuf.byteOffset + bBuf.byteLength) as ArrayBuffer;
+  const bold = bBuf.buffer.slice(bBuf.byteOffset, bBuf.byteOffset + bBuf.byteLength) as ArrayBuffer;
   cachedFonts = [
-    { name: 'Inter', data: regular, weight: 400, style: 'normal' },
-    { name: 'Inter', data: bold,    weight: 700, style: 'normal' },
+    { name: 'Space Grotesk', data: regular, weight: 400, style: 'normal' },
+    { name: 'Space Grotesk', data: bold, weight: 700, style: 'normal' },
   ];
   return cachedFonts;
 }
@@ -40,7 +39,7 @@ export async function generateOgImage({ title, subtitle }: OgData): Promise<Buff
         padding: '60px 72px',
         backgroundColor: '#111010',
         position: 'relative' as const,
-        fontFamily: 'Inter',
+        fontFamily: 'Space Grotesk',
       },
       children: [
         {

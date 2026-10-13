@@ -42,6 +42,8 @@ const props = Astro.props;
     <!-- Skip link for keyboard users -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
+    <div class="scroll-progress" aria-hidden="true"></div>
+
     <Navbar />
 
     <main id="main-content">
@@ -49,5 +51,36 @@ const props = Astro.props;
     </main>
 
     <Footer />
+
+    <script>
+      const sectionNav = document.querySelector<HTMLElement>('[data-section-nav]');
+      if (sectionNav) {
+        const links = [...sectionNav.querySelectorAll<HTMLAnchorElement>('a[href^="#"]')];
+        const sections = links
+          .map((link) => document.querySelector<HTMLElement>(link.hash))
+          .filter((el): el is HTMLElement => Boolean(el));
+
+        if (sections.length) {
+          const setCurrent = (id: string) => {
+            for (const link of links) {
+              const on = link.hash === `#${id}`;
+              if (on) link.setAttribute('aria-current', 'true');
+              else link.removeAttribute('aria-current');
+            }
+          };
+
+          const io = new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (entry.isIntersecting) setCurrent(entry.target.id);
+              }
+            },
+            { rootMargin: '-35% 0px -50% 0px', threshold: 0 },
+          );
+
+          for (const section of sections) io.observe(section);
+        }
+      }
+    </script>
   </body>
 </html>

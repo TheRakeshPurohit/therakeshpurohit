@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '@/layouts/Base.astro';
-import { site } from '@/utils/content';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import { site, breadcrumbJsonLd, externalLinks, socials } from '@/utils/content';
 
 const posts = (await getCollection('writing')).sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
@@ -11,7 +12,15 @@ const title = `Writing · ${site.name}`;
 const description =
   'Essays on AI, developer tools, content strategy, and the judgment required to use them well.';
 
+const rocketAuthor = externalLinks.find((l) => l.label === 'Rocket author page')!.href;
+const medium = socials.find((s) => s.label === 'Medium')!.href;
+const dhiwiseAuthor = externalLinks.find((l) => l.label === 'DhiWise author page')!.href;
+
 const jsonLd = [
+  breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Writing', path: '/writing' },
+  ]),
   {
     '@type': 'Blog',
     '@id': `${site.siteUrl}/writing#blog`,
@@ -20,6 +29,7 @@ const jsonLd = [
     description,
     inLanguage: 'en',
     isPartOf: { '@id': `${site.siteUrl}/#website` },
+    author: { '@id': `${site.siteUrl}/#person` },
     blogPost: posts.map((p) => ({
       '@type': 'BlogPosting',
       headline: p.data.title,
@@ -33,14 +43,20 @@ const jsonLd = [
 <Base {title} {description} ogImage="/og/writing.png" canonical="/writing" {jsonLd}>
   <div class="container" style="padding-block: clamp(3rem, 8vw, 6rem);">
 
+    <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Writing' }]} />
+
     <header class="mb-12">
       <span class="section-label">Writing</span>
       <h1 class="section-title" style="font-size: clamp(2.5rem, 6vw, 4rem);">
         Essays and long reads.
       </h1>
       <p class="rh-body" style="max-width: 34rem;">
-        All bylined. All grounded in things I've actually built, measured,
-        or shipped. No keyword farms.
+        Essays on this site. Published product writing also lives on{' '}
+        <a href={rocketAuthor} target="_blank" rel="noopener noreferrer">rocket.new/author</a>,{' '}
+        <a href={dhiwiseAuthor} target="_blank" rel="noopener noreferrer">DhiWise</a>,
+        and{' '}
+        <a href={medium} target="_blank" rel="noopener noreferrer">Medium</a>.
+        Campaign samples on <a href="/work">Work</a>.
       </p>
     </header>
 

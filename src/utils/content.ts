@@ -3,27 +3,73 @@ export const site = {
   role: 'DevRel Engineer',
   worksFor: 'Rocket',
   worksForUrl: 'https://rocket.new',
-  tagline: "I write and ship code. Can't fake the tech.",
+  tagline: 'I write and ship code. I build with the tools I write about.',
   summary:
-    'DevRel Engineer at Rocket (rocket.new). I lead technical content, content strategy and community: 144 bylined articles on AI agents and MCP, a Discord grown from 0 to 22k, and an Instagram rebuilt from 3 likes to up to 10k engagements. I build with the tools I write about.',
+    'DevRel Engineer at Rocket (rocket.new). Technical content, content strategy, and community: 144 bylined articles, Discord 0→22k, Instagram ~3 likes→~10k engagements.',
+  location: 'Surat, Gujarat. Relocating to Bengaluru.',
   email: 'rakeshpurohit909@gmail.com',
   siteUrl: 'https://www.therakeshpurohit.com',
+  knowsAbout: [
+    'Developer Relations',
+    'Technical writing',
+    'AI agents',
+    'Model Context Protocol',
+    'Content strategy',
+    'React',
+    'Next.js',
+    'SEO',
+  ],
 } as const;
 
-export const socials = [
-  { label: 'GitHub',   href: 'https://github.com/TheRakeshPurohit' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/therakeshpurohit' },
-  { label: 'X',        href: 'https://x.com/irakeshpurohit' },
+/** Primary site navigation (internal). */
+export const pages = [
+  { label: 'Home', href: '/' },
+  { label: 'Work', href: '/work' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Writing', href: '/writing' },
+  { label: 'About', href: '/about' },
 ] as const;
 
-export const metrics = [
-  { value: '144',  label: 'Bylined articles on rocket.new and DhiWise' },
-  { value: '22k',  label: 'Discord developer community members' },
-  { value: '~10k', label: 'Peak engagements on a single Instagram post' },
-  { value: '80%',  label: 'Organic traffic growth, Webflow → Next.js ISR' },
-  { value: '1M+',  label: 'Monthly users on a $70/mo Vercel infra budget' },
-  { value: '100K+', label: 'Figma plugin users (5k MAU)' },
+export const socials = [
+  { label: 'GitHub', href: 'https://github.com/TheRakeshPurohit' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/therakeshpurohit' },
+  { label: 'X', href: 'https://x.com/irakeshpurohit' },
+  { label: 'Medium', href: 'https://therakeshpurohit.medium.com' },
 ] as const;
+
+/** Notable external destinations for SEO + citation. */
+export const externalLinks = [
+  { label: 'Rocket', href: 'https://rocket.new' },
+  { label: 'Rocket author page', href: 'https://rocket.new/author/rakesh-purohit' },
+  { label: 'DhiWise author page', href: 'https://dhiwise.com/author/rakesh-purohit' },
+  { label: 'Instagram @rocketdotnew', href: 'https://www.instagram.com/rocketdotnew/' },
+  { label: 'X @rocketdotnew', href: 'https://x.com/rocketdotnew' },
+  { label: 'Gujarati React docs', href: 'https://gu.react.dev' },
+  { label: 'HTMX vs React', href: 'https://rocket.new/blog/htmx-vs-react' },
+  {
+    label: 'Linear MCP Server',
+    href: 'https://rocket.new/blog/linear-mcp-server-how-to-connect-issue-tracker',
+  },
+  {
+    label: 'ReactTestGen on Marketplace',
+    href: 'https://marketplace.visualstudio.com/items?itemName=TheRakeshPurohit.reacttestgen',
+  },
+] as const;
+
+export function breadcrumbJsonLd(
+  items: ReadonlyArray<{ name: string; path: string }>,
+) {
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${site.siteUrl}${items[items.length - 1]?.path ?? '/'}#breadcrumb`,
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: `${site.siteUrl}${item.path === '/' ? '' : item.path}`,
+    })),
+  };
+}
 
 export type Project = {
   title: string;
@@ -37,7 +83,7 @@ export const projects: Project[] = [
   {
     title: 'VSCode ReactTestGen',
     description:
-      'VS Code extension that generates React component test cases from source. Automates the tedious part of testing so you can stay in flow.',
+      'VS Code extension that generates React component test cases from source.',
     github: 'https://github.com/TheRakeshPurohit/VSCode-ReactTestGen',
     demo: 'https://marketplace.visualstudio.com/items?itemName=TheRakeshPurohit.reacttestgen',
     tags: ['VS Code', 'Testing', 'DX'],
@@ -51,16 +97,16 @@ export const projects: Project[] = [
   },
   {
     title: 'Water Reminder (Chrome Extension)',
-    description:
-      'Nudges you to stay hydrated every hour. Simple and persistent — your browser as a wellness habit.',
+    description: 'Nudges you to stay hydrated every hour.',
     github: 'https://github.com/TheRakeshPurohit/water-reminder',
     tags: ['Chrome Extension', 'Wellness'],
   },
   {
     title: 'Gujarati React Documentation',
     description:
-      'Maintainer of the official Gujarati translation of React docs (gu.react.dev). Making the framework accessible to ~60 million native speakers.',
+      'Maintainer of the official Gujarati translation of React docs (gu.react.dev).',
     github: 'https://github.com/reactjs/gu.react.dev',
+    demo: 'https://gu.react.dev',
     tags: ['Open Source', 'Localisation', 'React'],
   },
 ];
@@ -114,15 +160,18 @@ export const recognition = [
     title: 'India Quotient 30 Under 30',
     meta: '2024',
     description: 'Selected from 100 portfolio companies.',
+    href: 'https://indiaquotient.com/',
   },
   {
     title: 'DhiWise Employee of the Year',
     meta: '2022',
     description: '',
+    href: 'https://dhiwise.com',
   },
   {
     title: 'LinkedIn Learning: MCP – Hands-On with Agentic AI',
     meta: '2025',
     description: '',
+    href: 'https://www.linkedin.com/learning/',
   },
 ] as const;

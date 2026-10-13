@@ -1,7 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '@/layouts/Base.astro';
-import { site } from '@/utils/content';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import { site, breadcrumbJsonLd } from '@/utils/content';
 
 export async function getStaticPaths() {
   const posts = await getCollection('writing');
@@ -23,23 +24,31 @@ const dateStr = new Date(post.data.date).toLocaleDateString('en-GB', {
 const ogImage = `/og/${post.id}.png`;
 const canonicalUrl = `/writing/${post.id}`;
 const isoDate = new Date(post.data.date).toISOString();
+const pageUrl = `${site.siteUrl}/writing/${post.id}`;
 
 const jsonLd = [
+  breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Writing', path: '/writing' },
+    { name: post.data.title, path: `/writing/${post.id}` },
+  ]),
   {
     '@type': 'BlogPosting',
-    '@id': `${site.siteUrl}/writing/${post.id}#post`,
+    '@id': `${pageUrl}#post`,
     headline: post.data.title,
     description: post.data.description,
-    datePublished: new Date(post.data.date).toISOString(),
-    dateModified: new Date(post.data.date).toISOString(),
+    datePublished: isoDate,
+    dateModified: isoDate,
     inLanguage: 'en',
     author: { '@id': `${site.siteUrl}/#person` },
+    publisher: { '@id': `${site.siteUrl}/#person` },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `${site.siteUrl}/writing/${post.id}`,
+      '@id': pageUrl,
     },
     image: `${site.siteUrl}${ogImage}`,
     keywords: post.data.tags?.join(', '),
+    isPartOf: { '@id': `${site.siteUrl}/writing#blog` },
   },
 ];
 ---
@@ -59,22 +68,18 @@ const jsonLd = [
 >
   <div class="container" style="padding-block: clamp(3rem, 8vw, 5rem);">
 
-    <!-- Back link -->
-    <nav aria-label="Breadcrumb" style="margin-bottom: 2.5rem;">
-      <a
-        href="/writing"
-        class="rh-artifact"
-        style="margin-top: 0; font-size: 0.8125rem;"
-      >
-        ← All writing
-      </a>
-    </nav>
+    <Breadcrumb
+      items={[
+        { label: 'Home', href: '/' },
+        { label: 'Writing', href: '/writing' },
+        { label: post.data.title },
+      ]}
+    />
 
-    <!-- Post header -->
     <header style="max-width: 42rem; margin-bottom: 3rem;">
       <div class="flex flex-wrap items-center gap-3 mb-4">
         <time
-          datetime={new Date(post.data.date).toISOString()}
+          datetime={isoDate}
           class="post-date"
         >
           {dateStr}
@@ -105,15 +110,19 @@ const jsonLd = [
       </p>
     </header>
 
-    <!-- Post body -->
-    <article class="prose">
+    <article class="prose" itemprop="articleBody">
       <Content />
     </article>
 
-    <!-- Footer attribution -->
     <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border);">
       <p style="font-size: 0.875rem; color: var(--muted);">
-        By <a href="/about" style="color: var(--accent);">{site.name}</a> · {site.role} at {site.worksFor}
+        By <a href="/about" style="color: var(--accent);">{site.name}</a>
+        · {site.role} at{' '}
+        <a href={site.worksForUrl} target="_blank" rel="noopener noreferrer" style="color: var(--accent);">
+          {site.worksFor}
+        </a>
+        · More on <a href="/work" style="color: var(--accent);">Work</a>
+        and <a href="/writing" style="color: var(--accent);">Writing</a>
       </p>
     </footer>
 

@@ -1,12 +1,19 @@
 ---
 import Base from '@/layouts/Base.astro';
-import { site, projects } from '@/utils/content';
+import Breadcrumb from '@/components/Breadcrumb.astro';
+import { site, projects, breadcrumbJsonLd, socials } from '@/utils/content';
 
 const title = `Projects · ${site.name}`;
 const description =
   'Open source tools and side projects: a VS Code extension, a Figma plugin, Chrome extension, and the Gujarati React documentation.';
 
+const github = socials.find((s) => s.label === 'GitHub')!.href;
+
 const jsonLd = [
+  breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Projects', path: '/projects' },
+  ]),
   {
     '@type': 'CollectionPage',
     '@id': `${site.siteUrl}/projects#projects`,
@@ -28,14 +35,18 @@ const jsonLd = [
 <Base {title} {description} ogImage="/og/projects.png" canonical="/projects" {jsonLd}>
   <div class="container" style="padding-block: clamp(3rem, 8vw, 6rem);">
 
+    <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Projects' }]} />
+
     <header class="mb-12">
       <span class="section-label">Projects</span>
       <h1 class="section-title" style="font-size: clamp(2.5rem, 6vw, 4rem);">
         Tools and open source work.
       </h1>
       <p class="rh-body" style="max-width: 34rem;">
-        Things built for developers, by a developer. Mostly VS Code extensions, browser
-        plugins, and open source contributions. All source on GitHub.
+        VS Code extensions, browser plugins, and open source. Source on{' '}
+        <a href={github} target="_blank" rel="noopener noreferrer me">GitHub</a>.
+        Context on how these ship with the writing is on <a href="/">Home</a> and{' '}
+        <a href="/work">Work</a>.
       </p>
     </header>
 
@@ -74,7 +85,11 @@ const jsonLd = [
                   class="rh-artifact"
                   style="margin-top: 0;"
                 >
-                  {project.demo.includes('marketplace') ? 'Marketplace →' : 'Demo →'}
+                  {project.demo.includes('marketplace')
+                    ? 'Marketplace →'
+                    : project.demo.includes('gu.react.dev')
+                      ? 'gu.react.dev →'
+                      : 'Demo →'}
                 </a>
               )}
             </div>

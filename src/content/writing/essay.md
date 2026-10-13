@@ -6,11 +6,11 @@ tags: ["AI", "Hiring", "DevRel", "Judgment"]
 readTime: "7 min read"
 ---
 
-*By Rakesh Purohit*
+*By [Rakesh Purohit](/about)*
 
 The worst content I ever shipped was beautifully written.
 
-I was rebuilding the Instagram strategy for Rocket, the AI app builder I work on. I gave the model my brief, and it gave me back carousel copy that was clean, confident and on brand. It was also aimed at the wrong people. A few words I'd glossed over in my own input had pointed it at an audience that wasn't our ICP, and nothing in the output told me so. It didn't look broken. It looked finished.
+I was rebuilding the Instagram strategy for [Rocket](https://rocket.new) ([@rocketdotnew](https://www.instagram.com/rocketdotnew/)), the AI app builder I work on. I gave the model my brief, and it gave me back carousel copy that was clean, confident and on brand. It was also aimed at the wrong people. A few words I'd glossed over in my own input had pointed it at an audience that wasn't our ICP, and nothing in the output told me so. It didn't look broken. It looked finished.
 
 So I didn't prompt harder. I stopped, went back through everything it had produced, and spent time reading about the people we were actually trying to reach until I understood them better than my brief did. Then I took a break and started again. That restart is where the account went from about 3 likes a post, mostly from my own team, to up to about 10k engagements on a single post.
 
@@ -44,7 +44,7 @@ If that's true for experienced engineers on their own codebases, it's true for c
 
 ## What AI fluency actually is
 
-When I look at the people I trust with these tools, including the ones in the Discord community I grew from zero to 22,000 members, fluency isn't a bag of prompt tricks. It's three habits.
+When I look at the people I trust with these tools, including the ones in the [Discord community](/work) I grew from zero to 22,000 members, fluency isn't a bag of prompt tricks. It's three habits.
 
 **Know what you want before you ask.** My Instagram mistake wasn't a bad prompt. It was a thin understanding of the audience, written down as a prompt. The fix was reading and thinking, not prompt engineering. Good engineers do this with agents too. The ones who get great results from Claude Code are the ones who could have written a decent spec for a human.
 

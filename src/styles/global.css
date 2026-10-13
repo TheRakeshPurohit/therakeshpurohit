@@ -1,6 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap');
 @import "tailwindcss";
+
+/* Latin-only self-hosted fonts (no Google Fonts round-trip) */
+@font-face {
+  font-family: 'Fraunces Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url('@fontsource-variable/fraunces/files/fraunces-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 400;
+  src: url('@fontsource/space-grotesk/files/space-grotesk-latin-400-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 500;
+  src: url('@fontsource/space-grotesk/files/space-grotesk-latin-500-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  font-style: normal;
+  font-display: optional;
+  font-weight: 600;
+  src: url('@fontsource/space-grotesk/files/space-grotesk-latin-600-normal.woff2') format('woff2');
+}
 
 /* ─── Design tokens ─────────────────────────────────────── */
 :root {
@@ -23,7 +55,7 @@
 
 /* ─── Tailwind 4 theme tokens ───────────────────────────── */
 @theme {
-  --font-serif: "Fraunces", Georgia, serif;
+  --font-serif: "Fraunces Variable", Georgia, serif;
   --font-sans:  "Space Grotesk", system-ui, sans-serif;
 }
 
@@ -45,34 +77,20 @@ body {
   font-family: var(--font-sans, system-ui, sans-serif);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  transition: background-color 0.2s ease, color 0.2s ease;
   overflow-x: hidden;
 }
 
-/* ─── Film grain overlay ────────────────────────────────── */
+/* Static grain — no continuous animation (main-thread / compositor cost) */
 body::after {
   content: '';
   position: fixed;
-  inset: -50%;
-  width: 200%;
-  height: 200%;
+  inset: 0;
   pointer-events: none;
   z-index: 999;
-  opacity: 0.032;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='1'/></svg>");
-  background-size: 300px 300px;
-  animation: grain 0.6s steps(3) infinite;
-}
-
-@keyframes grain {
-  0%   { transform: translate(0, 0) }
-  33%  { transform: translate(-3%, 4%) }
-  66%  { transform: translate(3%, -4%) }
-  100% { transform: translate(-2%, 2%) }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  body::after { animation: none; }
+  opacity: 0.028;
+  contain: paint;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
 }
 
 /* ─── Typography ────────────────────────────────────────── */
@@ -434,13 +452,39 @@ a:hover { text-decoration-color: currentColor; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--bg) 85%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
   border-bottom: 1px solid var(--border);
 }
 
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  height: 2px;
+  width: 100%;
+  pointer-events: none;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  animation: scroll-progress linear;
+  animation-timeline: scroll();
+}
+
+@keyframes scroll-progress {
+  to { transform: scaleX(1); }
+}
+
+@supports not (animation-timeline: scroll()) {
+  .scroll-progress { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+}
+
 .nav-link {
+  position: relative;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--muted);
@@ -450,7 +494,63 @@ a:hover { text-decoration-color: currentColor; }
   transition: color 0.15s;
 }
 
-.nav-link:hover, .nav-link[aria-current="page"] { color: var(--fg); }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link[aria-current="page"] { color: var(--fg); }
+
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after { transform: scaleX(1); }
+
+/* Home chapter rail */
+.chapter-rail {
+  position: fixed;
+  right: 1rem;
+  top: 50%;
+  translate: 0 -50%;
+  z-index: 40;
+  display: none;
+  flex-direction: column;
+  gap: 0.625rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 1024px) {
+  .chapter-rail { display: flex; }
+}
+
+.chapter-rail a {
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 1px;
+  background: var(--border);
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.chapter-rail a[aria-current="true"] {
+  background: var(--accent);
+  transform: scaleY(1.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chapter-rail a { transition: none; }
+  .chapter-rail a[aria-current="true"] { transform: none; }
+}
 
 /* ─── Button ────────────────────────────────────────────── */
 .btn {
@@ -568,6 +668,37 @@ a:hover { text-decoration-color: currentColor; }
   padding-block: 4rem;
   border-top: 1px solid var(--border);
 }
+
+.footer-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem 3rem;
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  font-size: 0.8125rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
+}
+
+.breadcrumb a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover { color: var(--fg); }
+
+.breadcrumb [aria-current="page"] { color: var(--fg); }
 
 .credits-roll {
   display: grid;

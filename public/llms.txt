@@ -1,0 +1,23 @@
+# Rakesh Purohit
+
+> DevRel Engineer at Rocket (rocket.new). Technical content, content strategy, and community.
+
+- Site: https://www.therakeshpurohit.com
+- About: https://www.therakeshpurohit.com/about
+- Work: https://www.therakeshpurohit.com/work
+- Projects: https://www.therakeshpurohit.com/projects
+- Writing: https://www.therakeshpurohit.com/writing
+- Essay: https://www.therakeshpurohit.com/writing/essay
+- RSS: https://www.therakeshpurohit.com/rss.xml
+- Sitemap: https://www.therakeshpurohit.com/sitemap.xml
+
+## Elsewhere
+
+- Rocket: https://rocket.new
+- Author page: https://rocket.new/author/rakesh-purohit
+- DhiWise author: https://dhiwise.com/author/rakesh-purohit
+- GitHub: https://github.com/TheRakeshPurohit
+- LinkedIn: https://linkedin.com/in/therakeshpurohit
+- X: https://x.com/irakeshpurohit
+- Medium: https://therakeshpurohit.medium.com
+- Gujarati React docs: https://gu.react.dev

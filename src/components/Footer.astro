@@ -1,58 +1,86 @@
 ---
-import { site, socials } from '@/utils/content';
+import { site, socials, pages, externalLinks } from '@/utils/content';
 ---
 
 <footer class="footer" role="contentinfo">
   <div class="container">
-    <div class="grid gap-8 md:grid-cols-[1fr_auto]">
-
-      <!-- Left: contact -->
+    <div class="footer-grid">
       <div class="flex flex-col gap-4">
         <p class="section-label">Get in touch</p>
-        <div class="flex flex-wrap gap-4 items-center">
-          <a
-            href={`mailto:${site.email}`}
-            class="btn btn-primary text-sm"
-            style="font-size: 0.875rem;"
-          >
-            {site.email}
-          </a>
+        <a
+          href={`mailto:${site.email}`}
+          class="btn btn-primary text-sm"
+          style="font-size: 0.875rem; width: fit-content;"
+        >
+          {site.email}
+        </a>
+        <ul class="list-none m-0 p-0 flex flex-wrap gap-3" role="list">
           {socials.map(({ label, href }) => (
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="nav-link"
-              style="font-size: 0.875rem;"
-            >
-              {label} ↗
-            </a>
+            <li>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer me"
+                class="nav-link"
+                style="font-size: 0.8125rem;"
+              >
+                {label} ↗
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
-      <!-- Right: site links -->
-      <nav aria-label="Footer navigation">
-        <ul class="list-none m-0 p-0 flex flex-col gap-2 text-right" role="list">
-          <li><a href="/work"     class="nav-link" style="font-size: 0.8125rem;">Work</a></li>
-          <li><a href="/projects" class="nav-link" style="font-size: 0.8125rem;">Projects</a></li>
-          <li><a href="/writing"  class="nav-link" style="font-size: 0.8125rem;">Writing</a></li>
-          <li><a href="/about"    class="nav-link" style="font-size: 0.8125rem;">About</a></li>
+      <nav aria-label="Site">
+        <p class="section-label" style="margin-bottom: 0.75rem;">Site</p>
+        <ul class="list-none m-0 p-0 flex flex-col gap-1" role="list">
+          {pages.map(({ label, href }) => (
+            <li>
+              <a href={href} class="nav-link" style="font-size: 0.8125rem;">{label}</a>
+            </li>
+          ))}
+          <li>
+            <a href="/rss.xml" class="nav-link" style="font-size: 0.8125rem;">RSS feed</a>
+          </li>
+          <li>
+            <a href="/sitemap.xml" class="nav-link" style="font-size: 0.8125rem;">Sitemap</a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav aria-label="Elsewhere">
+        <p class="section-label" style="margin-bottom: 0.75rem;">Elsewhere</p>
+        <ul class="list-none m-0 p-0 flex flex-col gap-1" role="list">
+          {externalLinks.map(({ label, href }) => (
+            <li>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="nav-link"
+                style="font-size: 0.8125rem;"
+              >
+                {label} ↗
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>
 
-    <!-- Credits roll -->
     <div class="credits-roll mt-10 pt-8" style="border-top: 1px solid var(--border);">
       <p style="color: var(--muted); font-size: 0.8125rem; line-height: 1.8;">
-        Built by Rakesh Purohit with
-        <span style="color: var(--fg);">Astro 7 · Tailwind CSS 4 · Vercel</span><br />
-        AI tools in the loop:
-        <span style="color: var(--fg);">Claude Code · Codex · Cursor</span><br />
-        Judgment: entirely human.
+        Built with
+        <a href="https://astro.build" target="_blank" rel="noopener noreferrer" style="color: var(--fg);">Astro</a>
+        ·
+        <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" style="color: var(--fg);">Tailwind CSS</a>
+        ·
+        <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" style="color: var(--fg);">Vercel</a>
       </p>
       <p style="color: var(--muted); font-size: 0.75rem; margin-top: 0.75rem;">
-        &copy; {new Date().getFullYear()} {site.name} &middot; Surat, Gujarat
+        &copy; {new Date().getFullYear()}{' '}
+        <a href="/about" style="color: inherit;">{site.name}</a>
+        &middot; Surat, Gujarat
       </p>
     </div>
   </div>
